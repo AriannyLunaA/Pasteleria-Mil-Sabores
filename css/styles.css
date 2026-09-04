@@ -1,0 +1,79 @@
+/* VARIABLES DE COLOR Y TIPOGRAFÍA */
+:root {
+    /* Color de Fondo Principal */
+    --color-crema-pastel: #FFF5E1; 
+    
+    /* Colores de Acento */
+    --color-rosa-suave: #FFC0CB;
+    --color-chocolate: #8B4513;
+    
+    /* Colores de Texto */
+    --color-marron-oscuro: #5D4037;
+    --color-gris-claro: #B0BEC5;
+
+    /* Tipografías */
+    --fuente-principal: 'Lato', sans-serif;
+    --fuente-titulos: 'Pacifico', cursive;
+}
+
+/* ESTILOS BASE */
+body {
+    background-color: var(--color-crema-pastel);
+    color: var(--color-marron-oscuro);
+    font-family: var(--fuente-principal);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-marron-oscuro);
+    font-weight: normal;
+}
+
+.texto-secundario {
+    color: var(--color-gris-claro);
+}
+
+/* ESTILOS DE BOTONES E INTERACCIONES */
+button {
+    font-family: var(--fuente-principal);
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.btn-acento-rosa {
+    background-color: var(--color-rosa-suave);
+    color: var(--color-marron-oscuro);
+}
+
+.btn-acento-chocolate {
+    background-color: var(--color-chocolate);
+    color: #FFF5E1;
+}
+
+/* NAVEGACIÓN */
+.navegacion-principal ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.navegacion-principal a {
+    text-decoration: none;
+    color: var(--color-chocolate);
+    font-weight: bold;
+}
+
+.navegacion-principal a:hover {
+    color: var(--color-rosa-suave);
+}
