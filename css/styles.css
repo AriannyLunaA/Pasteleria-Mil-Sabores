@@ -430,3 +430,61 @@ button:hover {
 .promocion-card a button {
     width: 100%;
 }
+/* FORMULARIO DE REGISTRO */
+.seccion-registro {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--color-chocolate);
+}
+
+.seccion-registro h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.seccion-registro > p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.grupo-input {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-marron-oscuro);
+}
+
+.grupo-input input {
+    padding: 12px;
+    border: 1px solid var(--color-gris-claro);
+    border-radius: 5px;
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.grupo-input input:focus {
+    outline: none;
+    border-color: var(--color-chocolate);
+}
+
+.mensaje-error {
+    color: #d32f2f; /* Rojo para alertas */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 1.2em; /* Reserva el espacio aunque esté vacío para que el form no salte */
+}
+
+.text-pequeno {
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
