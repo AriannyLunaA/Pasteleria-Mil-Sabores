@@ -58,6 +58,35 @@ button:hover {
 }
 
 /* HEADER Y NAVEGACIÓN */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.accesos-usuario {
+    text-align: right;
+}
+
+.link-carrito {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-chocolate);
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.enlaces-auth a {
+    color: var(--color-marron-oscuro);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.enlaces-auth a:hover {
+    text-decoration: underline;
+}
 .header-principal {
     background-color: #ffffff;
     text-align: center;

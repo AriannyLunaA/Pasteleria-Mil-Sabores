@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pastelería 1000 Sabores</title>
+    <title>Pastelería 1000 Sabores - Inicio</title>
     
-    <!-- Importación de tipografías exigidas -->
+    <!-- Importación de tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -15,32 +15,42 @@
 </head>
 <body>
     <header class="header-principal">
-        <div class="logo-container">
-            <h1>Pastelería 1000 Sabores</h1>
-            <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+        <div class="header-top">
+            <!-- Logo y Nombre (Según Mockup) -->
+            <div class="logo-container">
+                <h1>Pastelería 1000 Sabores</h1>
+                <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+            </div>
+            
+            <!-- Carrito y Accesos (Según Mockup) -->
+            <div class="accesos-usuario">
+                <a href="carrito.html" class="link-carrito">🛒 Cart (0)</a>
+                <div class="enlaces-auth">
+                    <a href="iniciar_sesion.html">Iniciar sesión</a> | 
+                    <a href="registro.html">Registrar usuario</a>
+                </div>
+            </div>
         </div>
+
+        <!-- Navegación alineada a requerimientos (Figura 3) -->
         <nav class="navegacion-principal">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="promociones.html">Promociones</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="registro.html">Registro</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogo.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="contenido-principal">
-        <!-- Sección de Misión y Visión -->
+        <!-- Sección Banner/Hero (Según Mockup TIENDA ONLINE) -->
         <section class="historia-marca">
-            <h2>Nuestra Esencia</h2>
-            <article class="mision">
-                <h3>Misión</h3>
-                <p>Ofrecer una experiencia dulce y memorable a nuestros clientes, proporcionando tortas y productos de repostería de alta calidad para todas las ocasiones, mientras celebramos nuestras raíces históricas.</p>
-            </article>
-            <article class="vision">
-                <h3>Visión</h3>
-                <p>Convertirnos en la tienda online líder de productos de repostería en Chile, conocida por nuestra innovación, calidad y el impacto positivo en la comunidad.</p>
+            <article class="mision-vision">
+                <h2>TIENDA ONLINE</h2>
+                <p>Nuestras tortas y postres brindan la mejor experiencia dulce, ideal para celebrar en todas las regiones de Chile. Descubre nuestra variedad de sabores ahora.</p>
+                <a href="catalogo.html"><button class="btn-acento-rosa">Ver productos</button></a>
             </article>
             <!-- Video embebido requerido -->
             <div class="video-container">
@@ -51,20 +61,31 @@
         <!-- Sección de Productos Destacados -->
         <section class="productos-destacados">
             <h2>Nuestros Clásicos</h2>
+            <!-- Grilla estática para el Home (El catálogo completo dinámico está en catalogo.html) -->
             <div class="grilla-productos">
                 <article class="producto-card">
                     <img src="img/torta-chocolate.jpg" alt="Torta Cuadrada de Chocolate">
                     <h3>Torta Cuadrada de Chocolate</h3>
-                    <p class="texto-secundario">Deliciosa torta con capas de ganache y avellanas.</p>
+                    <p class="texto-secundario">Deliciosa torta con capas de ganache.</p>
                     <span class="precio">$45.000 CLP</span>
-                    <button class="btn-acento-rosa" id="btn-add-tc001">Agregar al carrito</button>
                 </article>
                 <article class="producto-card">
                     <img src="img/torta-vainilla.jpg" alt="Torta Circular de Vainilla">
                     <h3>Torta Circular de Vainilla</h3>
-                    <p class="texto-secundario">Bizcocho clásico con crema pastelera y glaseado dulce.</p>
+                    <p class="texto-secundario">Bizcocho clásico con crema pastelera.</p>
                     <span class="precio">$40.000 CLP</span>
-                    <button class="btn-acento-chocolate" id="btn-add-tt001">Personalizar y Agregar</button>
+                </article>
+                <article class="producto-card">
+                    <img src="img/torta-manjar.jpg" alt="Torta de Manjar y Nuez">
+                    <h3>Torta de Manjar y Nuez</h3>
+                    <p class="texto-secundario">El clásico sabor chileno.</p>
+                    <span class="precio">$42.000 CLP</span>
+                </article>
+                <article class="producto-card">
+                    <img src="img/torta-lucuma.jpg" alt="Torta de Lúcuma">
+                    <h3>Torta de Lúcuma</h3>
+                    <p class="texto-secundario">Sabor tradicional en bizcocho suave.</p>
+                    <span class="precio">$38.000 CLP</span>
                 </article>
             </div>
         </section>
@@ -74,6 +95,10 @@
         <div class="info-footer">
             <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
             <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <!-- Footer unificado con equipo -->
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
         </div>
     </footer>
 
