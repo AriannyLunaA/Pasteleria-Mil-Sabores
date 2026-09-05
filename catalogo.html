@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Pastelería 1000 Sabores</title>
+    <!-- Importación de tipografías exigidas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Conexión a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="logo-container">
+            <h1>Pastelería 1000 Sabores</h1>
+            <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+        </div>
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <section class="filtros-catalogo">
+            <h2>Catálogo de Productos</h2>
+            <div class="controles-filtro">
+                <label for="filtro-tipo">Filtrar por categoría:</label>
+                <!-- Select para filtrar, tal como lo exige el caso de negocio -->
+                <select id="filtro-tipo">
+                    <option value="todos">Mostrar Todos</option>
+                    <option value="cuadrada">Tortas Cuadradas</option>
+                    <option value="circular">Tortas Circulares</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Grilla de productos, cumpliendo con la visualización de 3 productos clave del ERS -->
+        <section class="grilla-productos" id="contenedor-productos">
+            
+            <!-- Producto 1: Torta Cuadrada -->
+            <article class="producto-card" data-categoria="cuadrada">
+                <img src="img/torta-chocolate.jpg" alt="Torta Cuadrada de Chocolate">
+                <div class="info-producto">
+                    <span class="id-producto texto-secundario">ID: TC-001</span>
+                    <h3>Torta Cuadrada de Chocolate</h3>
+                    <p>Bizcocho de chocolate intenso, relleno de crema de chocolate y trufa, cubierta de fondant.</p>
+                    <span class="precio">$45.000 CLP</span>
+                </div>
+                <!-- El ID en el botón facilitará la manipulación del carrito en JS -->
+                <button class="btn-acento-rosa btn-agregar-carrito" id="btn-add-tc001">Agregar al Carrito</button>
+            </article>
+
+            <!-- Producto 2: Torta Circular de Vainilla -->
+            <article class="producto-card" data-categoria="circular">
+                <img src="img/torta-vainilla.jpg" alt="Torta Circular de Vainilla">
+                <div class="info-producto">
+                    <span class="id-producto texto-secundario">ID: TT-001</span>
+                    <h3>Torta Circular de Vainilla</h3>
+                    <p>Torta clásica con bizcocho de vainilla, relleno a elección y cubierta de crema chantilly.</p>
+                    <span class="precio">$40.000 CLP</span>
+                </div>
+                <button class="btn-acento-rosa btn-agregar-carrito" id="btn-add-tt001">Agregar al Carrito</button>
+            </article>
+
+            <!-- Producto 3: Torta Circular de Manjar -->
+            <article class="producto-card" data-categoria="circular">
+                <img src="img/torta-manjar.jpg" alt="Torta Circular de Manjar y Nuez">
+                <div class="info-producto">
+                    <span class="id-producto texto-secundario">ID: TT-002</span>
+                    <h3>Torta de Manjar y Nuez</h3>
+                    <p>El clásico sabor chileno. Bizcocho de nuez con abundante manjar y nueces picadas.</p>
+                    <span class="precio">$42.000 CLP</span>
+                </div>
+                <button class="btn-acento-rosa btn-agregar-carrito" id="btn-add-tt002">Agregar al Carrito</button>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <!-- Conexión al archivo JS -->
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Pastelería 1000 Sabores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="logo-container">
+            <h1>Pastelería 1000 Sabores</h1>
+            <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+        </div>
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <section class="seccion-registro">
+            <h2>Crea tu cuenta</h2>
+            <p class="texto-secundario">Únete a nuestra comunidad y accede a beneficios exclusivos.</p>
+            
+            <!-- El atributo novalidate permite que JS controle las validaciones -->
+            <form id="formulario-registro" action="#" method="POST" novalidate>
+                
+                <div class="grupo-input">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+                    <!-- Contenedor para inyectar el error con JS -->
+                    <span class="mensaje-error" id="error-nombre"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="correo">Correo Electrónico Institucional (Ej: @duocuc.cl):</label>
+                    <input type="email" id="correo" name="correo" autocomplete="email" required>
+                    <span class="mensaje-error" id="error-correo"></span>
+                    <p class="texto-secundario text-pequeno">Alumnos Duoc reciben torta gratis en su cumpleaños.</p>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="bday" required>
+                    <span class="mensaje-error" id="error-edad"></span>
+                    <p class="texto-secundario text-pequeno">Mayores de 50 años reciben un 50% de descuento automático.</p>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="codigo-descuento">Código de Promoción (Opcional):</label>
+                    <input type="text" id="codigo-descuento" name="codigo-descuento" placeholder="Ej: FELICES50">
+                    <span class="mensaje-error" id="error-codigo"></span>
+                </div>
+
+                <button type="submit" class="btn-acento-chocolate btn-block" id="btn-registrar">Registrarme</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>
