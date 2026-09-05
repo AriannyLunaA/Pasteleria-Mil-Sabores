@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Pastelería 1000 Sabores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="logo-container">
+            <h1>Pastelería 1000 Sabores</h1>
+            <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+        </div>
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <h2>Tu Carrito de Compras</h2>
+        <div class="layout-carrito">
+            
+            <!-- Columna Izquierda: Lista de productos -->
+            <section class="lista-carrito" id="contenedor-items-carrito">
+                
+                <!-- Producto simulado 1 -->
+                <article class="item-carrito">
+                    <img src="img/torta-chocolate.jpg" alt="Torta Cuadrada de Chocolate">
+                    <div class="detalles-item">
+                        <h3>Torta Cuadrada de Chocolate</h3>
+                        <p class="precio">$45.000 CLP</p>
+                    </div>
+                    <div class="controles-cantidad">
+                        <label for="cantidad-tc001" class="texto-secundario">Cant:</label>
+                        <input type="number" id="cantidad-tc001" value="1" min="1" class="input-cantidad">
+                        <button class="btn-eliminar" id="btn-eliminar-tc001">🗑️ Eliminar</button>
+                    </div>
+                </article>
+
+                <!-- Producto simulado 2 -->
+                <article class="item-carrito">
+                    <img src="img/torta-vainilla.jpg" alt="Torta Circular de Vainilla">
+                    <div class="detalles-item">
+                        <h3>Torta Circular de Vainilla</h3>
+                        <p class="precio">$40.000 CLP</p>
+                    </div>
+                    <div class="controles-cantidad">
+                        <label for="cantidad-tt001" class="texto-secundario">Cant:</label>
+                        <input type="number" id="cantidad-tt001" value="1" min="1" class="input-cantidad">
+                        <button class="btn-eliminar" id="btn-eliminar-tt001">🗑️ Eliminar</button>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Columna Derecha: Resumen y Pago -->
+            <aside class="resumen-compra">
+                <h3>Resumen del Pedido</h3>
+                
+                <!-- Preparado para la regla de negocio del código de descuento -->
+                <div class="grupo-descuento">
+                    <label for="codigo-carrito">Código de Descuento:</label>
+                    <div class="input-con-boton">
+                        <input type="text" id="codigo-carrito" placeholder="Ej: FELICES50">
+                        <button class="btn-acento-rosa" id="btn-aplicar-descuento">Aplicar</button>
+                    </div>
+                    <span id="mensaje-descuento" class="texto-secundario"></span>
+                </div>
+
+                <hr>
+
+                <!-- IDs listos para que JS inyecte los cálculos matemáticos -->
+                <div class="totales">
+                    <p>Subtotal: <span id="subtotal-carrito">$85.000</span></p>
+                    <p>Descuento: <span id="monto-descuento">-$0</span></p>
+                    <p class="total-final">Total a Pagar: <span id="total-final-carrito">$85.000</span></p>
+                </div>
+
+                <button class="btn-acento-chocolate btn-block" id="btn-procesar-pago">Proceder al Pago</button>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

@@ -228,3 +228,131 @@ button:hover {
     width: 100%;
     margin-top: auto;
 }
+
+/* CARRITO DE COMPRAS */
+.layout-carrito {
+    display: grid;
+    /* Divide la pantalla: 2 fracciones para la lista, 1 para el resumen */
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.lista-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-carrito {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gris-claro);
+    border-radius: 8px;
+    padding: 15px;
+    gap: 20px;
+}
+
+.item-carrito img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.detalles-item {
+    flex-grow: 1;
+}
+
+.detalles-item h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.controles-cantidad {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.input-cantidad {
+    width: 60px;
+    padding: 5px;
+    border: 2px solid var(--color-rosa-suave);
+    border-radius: 5px;
+    text-align: center;
+    font-family: var(--fuente-principal);
+}
+
+.btn-eliminar {
+    background: none;
+    color: #d32f2f;
+    padding: 5px;
+    font-size: 0.9rem;
+}
+
+.btn-eliminar:hover {
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.resumen-compra {
+    background-color: var(--color-rosa-suave);
+    padding: 25px;
+    border-radius: 8px;
+    position: sticky; /* Mantiene el resumen visible al hacer scroll */
+    top: 20px;
+}
+
+.input-con-boton {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-con-boton input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--color-chocolate);
+    border-radius: 5px;
+    font-family: var(--fuente-principal);
+}
+
+.totales p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.total-final {
+    font-weight: bold;
+    font-size: 1.4rem !important;
+    color: var(--color-chocolate);
+    border-top: 2px solid var(--color-chocolate);
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.btn-block {
+    width: 100%;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .layout-carrito {
+        grid-template-columns: 1fr; /* Pasa a 1 sola columna */
+    }
+    .item-carrito {
+        flex-direction: column;
+        text-align: center;
+    }
+    .controles-cantidad {
+        align-items: center;
+        width: 100%;
+    }
+}
