@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Pastelería 1000 Sabores</title>
+    <title>Iniciar Sesión - Pastelería 1000 Sabores</title>
     
     <!-- Importación de tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
             
             <!-- Carrito y Accesos -->
             <div class="accesos-usuario">
-                <a href="carrito.html" class="link-carrito">🛒 Cart (0)</a>
+                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>)</a>
                 <div class="enlaces-auth">
                     <a href="iniciar_sesion.html">Iniciar sesión</a> | 
                     <a href="registro.html">Registrar usuario</a>
@@ -36,7 +36,7 @@
         <nav class="navegacion-principal">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="catalogo.html">Productos</a></li>
+                <li><a href="productos.html">Productos</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
                 <li><a href="blogs.html">Blogs</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
@@ -45,21 +45,26 @@
     </header>
 
     <main class="contenido-principal">
-        <section class="filtros-catalogo">
-            <h2>Catálogo de Productos</h2>
-            <div class="controles-filtro">
-                <label for="filtro-tipo">Filtrar por categoría:</label>
-                <select id="filtro-tipo">
-                    <option value="todos">Mostrar Todos</option>
-                    <option value="cuadrada">Tortas Cuadradas</option>
-                    <option value="circular">Tortas Circulares</option>
-                </select>
-            </div>
-        </section>
-
-        <!-- CONTENEDOR VACÍO: JavaScript inyectará aquí las tarjetas de productos -->
-        <section class="grilla-productos" id="contenedor-productos">
-            <!-- El contenido se genera automáticamente desde js/scripts.js -->
+        <!-- Reutilizamos la clase del registro para mantener la simetría visual -->
+        <section class="seccion-registro" style="max-width: 400px; margin: 40px auto;">
+            <h2 style="text-align: center;">Iniciar Sesión</h2>
+            <p class="texto-secundario" style="text-align: center;">Ingresa a tu cuenta para gestionar tus pedidos.</p>
+            
+            <form id="formulario-login" action="#" method="POST" novalidate>
+                <div class="grupo-input">
+                    <label for="correo-login">Correo Electrónico:</label>
+                    <input type="email" id="correo-login" name="correo-login" placeholder="usuario@duoc.cl" required maxlength="100">
+                    <span class="mensaje-error" id="error-correo-login"></span>
+                </div>
+                
+                <div class="grupo-input">
+                    <label for="pass-login">Contraseña:</label>
+                    <input type="password" id="pass-login" name="pass-login" required minlength="4" maxlength="10">
+                    <span class="mensaje-error" id="error-pass-login"></span>
+                </div>
+                
+                <button type="submit" class="btn-acento-chocolate btn-block">Ingresar</button>
+            </form>
         </section>
     </main>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promociones - Pastelería 1000 Sabores</title>
+    <title>Productos - Pastelería 1000 Sabores</title>
     
     <!-- Importación de tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
             
             <!-- Carrito y Accesos -->
             <div class="accesos-usuario">
-                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>)</a>
+                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>   )</a>
                 <div class="enlaces-auth">
                     <a href="iniciar_sesion.html">Iniciar sesión</a> | 
                     <a href="registro.html">Registrar usuario</a>
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <!-- Navegación alineada a los mockups -->
+        <!-- Navegación unificada con la ruta correcta -->
         <nav class="navegacion-principal">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -45,37 +45,22 @@
     </header>
 
     <main class="contenido-principal">
-        <section class="banner-aniversario">
-            <h2>¡Celebramos 50 Años Contigo!</h2>
-            <p>Descubre los beneficios exclusivos que hemos preparado para agradecer tu preferencia durante este medio siglo de dulzura.</p>
+        <!-- Título y Filtros -->
+        <section class="filtros-catalogo">
+            <h2>Catálogo de Productos</h2>
+            <div class="controles-filtro">
+                <label for="filtro-tipo">Filtrar por categoría:</label>
+                <select id="filtro-tipo">
+                    <option value="todos">Mostrar Todos</option>
+                    <option value="cuadrada">Tortas Cuadradas</option>
+                    <option value="circular">Tortas Circulares</option>
+                </select>
+            </div>
         </section>
 
-        <section class="grilla-promociones">
-            
-            <!-- Promoción 1: Edad -->
-            <article class="promocion-card">
-                <div class="descuento-destacado">50%</div>
-                <h3>Descuento Senior</h3>
-                <p class="texto-secundario">Porque la experiencia se celebra. Usuarios mayores de 50 años reciben un 50% de rebaja en todas sus compras. ¡Automático al registrar tu fecha de nacimiento!</p>
-                <a href="registro.html"><button class="btn-acento-rosa">Registrarme ahora</button></a>
-            </article>
-
-            <!-- Promoción 2: Convenio Institucional (Texto actualizado según requerimiento) -->
-            <article class="promocion-card">
-                <div class="descuento-destacado">Gratis</div>
-                <h3>Cumpleañero Institucional</h3>
-                <p class="texto-secundario">Regístrate con tu correo (@duoc.cl, @profesor.duoc.cl o @gmail.com) y llévate una torta completamente gratis el día de tu cumpleaños.</p>
-                <a href="registro.html"><button class="btn-acento-rosa">Validar mi correo</button></a>
-            </article>
-
-            <!-- Promoción 3: Código de Descuento -->
-            <article class="promocion-card">
-                <div class="descuento-destacado">-10%</div>
-                <h3>Cupón Aniversario</h3>
-                <p class="texto-secundario">Celebra con nosotros. Usa el código secreto <strong>FELICES50</strong> antes de pagar en tu carrito de compras y obtén un 10% de descuento en el total.</p>
-                <a href="carrito.html"><button class="btn-acento-rosa">Ir a mi carrito</button></a>
-            </article>
-
+        <!-- CONTENEDOR VACÍO CRÍTICO: JavaScript inyectará aquí las tarjetas de productos -->
+        <section class="grilla-productos" id="contenedor-productos">
+            <!-- El contenido se genera automáticamente desde js/scripts.js -->
         </section>
     </main>
 
@@ -89,6 +74,7 @@
         </div>
     </footer>
 
+    <!-- Conexión al archivo JS -->
     <script src="js/scripts.js" defer></script>
 </body>
 </html>

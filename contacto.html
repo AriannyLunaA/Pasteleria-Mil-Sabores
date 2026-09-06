@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promociones - Pastelería 1000 Sabores</title>
+    <title>Contacto - Pastelería 1000 Sabores</title>
     
     <!-- Importación de tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,37 +45,35 @@
     </header>
 
     <main class="contenido-principal">
-        <section class="banner-aniversario">
-            <h2>¡Celebramos 50 Años Contigo!</h2>
-            <p>Descubre los beneficios exclusivos que hemos preparado para agradecer tu preferencia durante este medio siglo de dulzura.</p>
-        </section>
-
-        <section class="grilla-promociones">
+        <!-- Reutilizamos la clase del registro para mantener la simetría visual -->
+        <section class="seccion-registro">
+            <h2>Formulario de Contactos</h2>
+            <p class="texto-secundario">Envíanos tus dudas o sugerencias y te responderemos a la brevedad.</p>
             
-            <!-- Promoción 1: Edad -->
-            <article class="promocion-card">
-                <div class="descuento-destacado">50%</div>
-                <h3>Descuento Senior</h3>
-                <p class="texto-secundario">Porque la experiencia se celebra. Usuarios mayores de 50 años reciben un 50% de rebaja en todas sus compras. ¡Automático al registrar tu fecha de nacimiento!</p>
-                <a href="registro.html"><button class="btn-acento-rosa">Registrarme ahora</button></a>
-            </article>
+            <!-- Formulario controlado por JS -->
+            <form id="formulario-contacto" action="#" method="POST" novalidate>
+                
+                <div class="grupo-input">
+                    <label for="nombre-contacto">Nombre Completo:</label>
+                    <input type="text" id="nombre-contacto" name="nombre-contacto" required maxlength="100">
+                    <span class="mensaje-error" id="error-nombre-contacto"></span>
+                </div>
 
-            <!-- Promoción 2: Convenio Institucional (Texto actualizado según requerimiento) -->
-            <article class="promocion-card">
-                <div class="descuento-destacado">Gratis</div>
-                <h3>Cumpleañero Institucional</h3>
-                <p class="texto-secundario">Regístrate con tu correo (@duoc.cl, @profesor.duoc.cl o @gmail.com) y llévate una torta completamente gratis el día de tu cumpleaños.</p>
-                <a href="registro.html"><button class="btn-acento-rosa">Validar mi correo</button></a>
-            </article>
+                <div class="grupo-input">
+                    <label for="correo-contacto">Correo Electrónico:</label>
+                    <input type="email" id="correo-contacto" name="correo-contacto" required maxlength="100">
+                    <span class="mensaje-error" id="error-correo-contacto"></span>
+                    <p class="texto-secundario text-pequeno">Solo se aceptan correos @duoc.cl, @profesor.duoc.cl o @gmail.com</p>
+                </div>
 
-            <!-- Promoción 3: Código de Descuento -->
-            <article class="promocion-card">
-                <div class="descuento-destacado">-10%</div>
-                <h3>Cupón Aniversario</h3>
-                <p class="texto-secundario">Celebra con nosotros. Usa el código secreto <strong>FELICES50</strong> antes de pagar en tu carrito de compras y obtén un 10% de descuento en el total.</p>
-                <a href="carrito.html"><button class="btn-acento-rosa">Ir a mi carrito</button></a>
-            </article>
+                <div class="grupo-input">
+                    <label for="mensaje-contacto">Mensaje (Máximo 500 caracteres):</label>
+                    <textarea id="mensaje-contacto" name="mensaje-contacto" required maxlength="500" rows="5" style="width: 100%; padding: 12px; border: 1px solid var(--color-gris-claro); border-radius: 5px; font-family: var(--fuente-principal); resize: vertical;"></textarea>
+                    <span class="mensaje-error" id="error-mensaje-contacto"></span>
+                </div>
 
+                <button type="submit" class="btn-acento-chocolate btn-block">Enviar Mensaje</button>
+            </form>
         </section>
     </main>
 
@@ -89,6 +87,7 @@
         </div>
     </footer>
 
+    <!-- Conexión al archivo JS -->
     <script src="js/scripts.js" defer></script>
 </body>
-</html>
+</html>S

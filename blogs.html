@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras - Pastelería 1000 Sabores</title>
+    <title>Blogs - Pastelería 1000 Sabores</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -24,7 +24,6 @@
                 </div>
             </div>
         </div>
-
         <nav class="navegacion-principal">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -37,48 +36,42 @@
     </header>
 
     <main class="contenido-principal">
-        <h2>Mi carrito de compras</h2>
-        <div class="layout-carrito">
-            
-            <!-- CONTENEDOR VACÍO: JS inyectará aquí los productos del localStorage -->
-            <section class="lista-carrito" id="contenedor-items-carrito">
-            </section>
+        <h2 style="text-align: center; margin-bottom: 40px;">NOTICIAS IMPORTANTES</h2>
 
-            <!-- Columna Derecha: Resumen y Pago -->
-            <aside class="resumen-compra">
-                <h3>Resumen del Pedido</h3>
-                
-                <div class="grupo-descuento">
-                    <label for="codigo-carrito">Ingrese el cupón de descuento:</label>
-                    <div class="input-con-boton">
-                        <input type="text" id="codigo-carrito" placeholder="Ej: FELICES50">
-                        <button class="btn-acento-rosa" id="btn-aplicar-descuento">APLICAR</button>
-                    </div>
-                    <span id="mensaje-descuento" class="texto-secundario"></span>
-                </div>
+        <!-- CASO CURIOSO #1 -->
+        <section class="historia-marca" style="margin-bottom: 30px; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+            <article class="mision-vision">
+                <h3>CASO CURIOSO #1: El secreto de la Torta de Manjar</h3>
+                <p>Descubre el proceso artesanal detrás de nuestro clásico más vendido y por qué utilizamos manjar de campo hervido por más de 4 horas.</p>
+                <a href="detalle_blog.html"><button class="btn-acento-rosa">VER CASO</button></a>
+            </article>
+            <div class="video-container">
+                <img src="img/blog1.jpg" alt="Preparación de torta" style="width: 100%; border-radius: 8px; object-fit: cover;">
+            </div>
+        </section>
 
-                <hr>
-
-                <div class="totales">
-                    <p>Subtotal: <span id="subtotal-carrito">$0</span></p>
-                    <p>Descuento: <span id="monto-descuento">-$0</span></p>
-                    <p class="total-final">TOTAL: <span id="total-final-carrito">$0</span></p>
-                </div>
-
-                <button class="btn-acento-chocolate btn-block" id="btn-procesar-pago" style="background-color: green;">PAGAR</button>
-            </aside>
-        </div>
+        <!-- CASO CURIOSO #2 -->
+        <section class="historia-marca" style="margin-bottom: 30px; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+            <article class="mision-vision">
+                <h3>CASO CURIOSO #2: Repostería sin azúcar</h3>
+                <p>La innovación llega a nuestros hornos. Conoce cómo logramos mantener el sabor de siempre utilizando alternativas saludables para toda la familia.</p>
+                <a href="detalle_blog_2.html"><button class="btn-acento-rosa">VER CASO</button></a>
+            </article>
+            <div class="video-container">
+                <img src="img/blog2.jpg" alt="Ingredientes saludables" style="width: 100%; border-radius: 8px; object-fit: cover;">
+            </div>
+        </section>
     </main>
 
     <footer class="pie-pagina">
         <div class="info-footer">
-            <p>© 2026 Pastelería 1000 Sabores.</p>
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
         </div>
         <div class="equipo-desarrollo">
             <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
         </div>
     </footer>
-
     <script src="js/scripts.js" defer></script>
 </body>
 </html>
