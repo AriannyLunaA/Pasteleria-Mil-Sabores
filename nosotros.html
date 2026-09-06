@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Pastelería 1000 Sabores</title>
+    
+    <!-- Importación de tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Conexión a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-top">
+            <!-- Logo y Nombre -->
+            <div class="logo-container">
+                <h1>Pastelería 1000 Sabores</h1>
+                <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+            </div>
+            
+            <!-- Carrito y Accesos -->
+            <div class="accesos-usuario">
+                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>)</a>
+                <div class="enlaces-auth">
+                    <a href="iniciar_sesion.html">Iniciar sesión</a> | 
+                    <a href="registro.html">Registrar usuario</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación alineada a los mockups -->
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <!-- Sección 1: Sobre la Empresa -->
+        <section class="historia-marca" style="margin-bottom: 40px;">
+            <h2>Nuestra Historia</h2>
+            <article class="mision-vision">
+                <p><strong>Pastelería 1000 Sabores</strong> nació hace 50 años con un objetivo claro: llevar los sabores más tradicionales de la repostería chilena a la mesa de cada familia. Desde nuestras clásicas tortas de manjar y nuez hasta la suave crema de lúcuma, trabajamos día a día con ingredientes frescos y recetas que han pasado de generación en generación.</p>
+                <p>Hoy, damos un salto hacia el futuro digital, permitiendo que nuestros clientes puedan hacer sus pedidos desde cualquier parte de Chile a través de nuestra nueva tienda online, sin perder el cariño y la calidad artesanal de siempre.</p>
+            </article>
+        </section>
+
+        <!-- Sección 2: Sobre los Desarrolladores (Requerimiento de la rúbrica) -->
+        <section class="equipo-creadores">
+            <h2>Los Desarrolladores</h2>
+            <p class="texto-secundario" style="text-align: center; margin-bottom: 30px;">Conoce al equipo de ingeniería detrás de la transformación digital de Pastelería 1000 Sabores.</p>
+            
+            <div class="grilla-productos" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <article class="producto-card" style="text-align: center; padding: 20px;">
+                    <h3>Arianny L.</h3>
+                    <p class="texto-secundario">Desarrolladora Frontend</p>
+                    <p>Especialista en estructuración semántica con HTML5 y diseño de interfaces responsivas centradas en la experiencia del usuario.</p>
+                </article>
+
+                <article class="producto-card" style="text-align: center; padding: 20px;">
+                    <h3>Apolo V.</h3>
+                    <p class="texto-secundario">Desarrollador Backend & JS</p>
+                    <p>Encargado de la lógica de negocio, validaciones complejas de formularios y gestión de persistencia de datos con LocalStorage.</p>
+                </article>
+
+                <article class="producto-card" style="text-align: center; padding: 20px;">
+                    <h3>Sofía V.</h3>
+                    <p class="texto-secundario">Diseñadora UI/UX & CSS</p>
+                    <p>Responsable de la identidad visual, hojas de estilo en cascada (CSS3) y la accesibilidad general del sitio web.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

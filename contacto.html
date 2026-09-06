@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Pastelería 1000 Sabores</title>
+    
+    <!-- Importación de tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Conexión a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-top">
+            <!-- Logo y Nombre -->
+            <div class="logo-container">
+                <h1>Pastelería 1000 Sabores</h1>
+                <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+            </div>
+            
+            <!-- Carrito y Accesos -->
+            <div class="accesos-usuario">
+                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>)</a>
+                <div class="enlaces-auth">
+                    <a href="iniciar_sesion.html">Iniciar sesión</a> | 
+                    <a href="registro.html">Registrar usuario</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación alineada a los mockups -->
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <!-- Reutilizamos la clase del registro para mantener la simetría visual -->
+        <section class="seccion-registro">
+            <h2>Formulario de Contactos</h2>
+            <p class="texto-secundario">Envíanos tus dudas o sugerencias y te responderemos a la brevedad.</p>
+            
+            <!-- Formulario controlado por JS -->
+            <form id="formulario-contacto" action="#" method="POST" novalidate>
+                
+                <div class="grupo-input">
+                    <label for="nombre-contacto">Nombre Completo:</label>
+                    <input type="text" id="nombre-contacto" name="nombre-contacto" required maxlength="100">
+                    <span class="mensaje-error" id="error-nombre-contacto"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="correo-contacto">Correo Electrónico:</label>
+                    <input type="email" id="correo-contacto" name="correo-contacto" required maxlength="100">
+                    <span class="mensaje-error" id="error-correo-contacto"></span>
+                    <p class="texto-secundario text-pequeno">Solo se aceptan correos @duoc.cl, @profesor.duoc.cl o @gmail.com</p>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="mensaje-contacto">Mensaje (Máximo 500 caracteres):</label>
+                    <textarea id="mensaje-contacto" name="mensaje-contacto" required maxlength="500" rows="5" style="width: 100%; padding: 12px; border: 1px solid var(--color-gris-claro); border-radius: 5px; font-family: var(--fuente-principal); resize: vertical;"></textarea>
+                    <span class="mensaje-error" id="error-mensaje-contacto"></span>
+                </div>
+
+                <button type="submit" class="btn-acento-chocolate btn-block">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <!-- Conexión al archivo JS -->
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>S

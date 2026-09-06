@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Pastelería 1000 Sabores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-top">
+            <div class="logo-container">
+                <h1>Pastelería 1000 Sabores</h1>
+                <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+            </div>
+            <div class="accesos-usuario">
+                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>)</a>
+                <div class="enlaces-auth">
+                    <a href="iniciar_sesion.html">Iniciar sesión</a> | 
+                    <a href="registro.html">Registrar usuario</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <h2>Mi carrito de compras</h2>
+        <div class="layout-carrito">
+            
+            <!-- CONTENEDOR VACÍO: JS inyectará aquí los productos del localStorage -->
+            <section class="lista-carrito" id="contenedor-items-carrito">
+            </section>
+
+            <!-- Columna Derecha: Resumen y Pago -->
+            <aside class="resumen-compra">
+                <h3>Resumen del Pedido</h3>
+                
+                <div class="grupo-descuento">
+                    <label for="codigo-carrito">Ingrese el cupón de descuento:</label>
+                    <div class="input-con-boton">
+                        <input type="text" id="codigo-carrito" placeholder="Ej: FELICES50">
+                        <button class="btn-acento-rosa" id="btn-aplicar-descuento">APLICAR</button>
+                    </div>
+                    <span id="mensaje-descuento" class="texto-secundario"></span>
+                </div>
+
+                <hr>
+
+                <div class="totales">
+                    <p>Subtotal: <span id="subtotal-carrito">$0</span></p>
+                    <p>Descuento: <span id="monto-descuento">-$0</span></p>
+                    <p class="total-final">TOTAL: <span id="total-final-carrito">$0</span></p>
+                </div>
+
+                <button class="btn-acento-chocolate btn-block" id="btn-procesar-pago" style="background-color: green;">PAGAR</button>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* VARIABLES DE COLOR Y TIPOGRAFÍA */
 :root {
     /* Color de Fondo Principal */
@@ -12,21 +13,40 @@
     --color-gris-claro: #B0BEC5;
 
     /* Tipografías */
+=======
+/* VARIABLES Y BASE */
+:root {
+    --color-crema-pastel: #FFF5E1;
+    --color-rosa-suave: #FFC0CB;
+    --color-chocolate: #8B4513;
+    --color-marron-oscuro: #5D4037;
+    --color-gris-claro: #B0BEC5;
+>>>>>>> feature/ariannyluna
     --fuente-principal: 'Lato', sans-serif;
     --fuente-titulos: 'Pacifico', cursive;
 }
 
+<<<<<<< HEAD
 /* ESTILOS BASE */
+=======
+>>>>>>> feature/ariannyluna
 body {
     background-color: var(--color-crema-pastel);
     color: var(--color-marron-oscuro);
     font-family: var(--fuente-principal);
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
+=======
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+>>>>>>> feature/ariannyluna
 }
 
 h1, h2, h3 {
     font-family: var(--fuente-titulos);
+<<<<<<< HEAD
     color: var(--color-marron-oscuro);
     font-weight: normal;
 }
@@ -36,10 +56,24 @@ h1, h2, h3 {
 }
 
 /* ESTILOS DE BOTONES E INTERACCIONES */
+=======
+    color: var(--color-chocolate);
+    font-weight: normal;
+    margin-top: 0;
+}
+
+.texto-secundario {
+    color: var(--color-marron-oscuro);
+    opacity: 0.8;
+}
+
+/* BOTONES */
+>>>>>>> feature/ariannyluna
 button {
     font-family: var(--fuente-principal);
     font-weight: bold;
     border: none;
+<<<<<<< HEAD
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -48,6 +82,16 @@ button {
 
 button:hover {
     opacity: 0.8;
+=======
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.02);
+>>>>>>> feature/ariannyluna
 }
 
 .btn-acento-rosa {
@@ -57,6 +101,7 @@ button:hover {
 
 .btn-acento-chocolate {
     background-color: var(--color-chocolate);
+<<<<<<< HEAD
     color: #FFF5E1;
 }
 
@@ -66,14 +111,477 @@ button:hover {
     padding: 0;
     display: flex;
     gap: 15px;
+=======
+    color: var(--color-crema-pastel);
+}
+
+/* HEADER Y NAVEGACIÓN */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.accesos-usuario {
+    text-align: right;
+}
+
+.link-carrito {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-chocolate);
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.enlaces-auth a {
+    color: var(--color-marron-oscuro);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.enlaces-auth a:hover {
+    text-decoration: underline;
+}
+.header-principal {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 4px solid var(--color-rosa-suave);
+}
+
+.logo-container h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.navegacion-principal ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+>>>>>>> feature/ariannyluna
 }
 
 .navegacion-principal a {
     text-decoration: none;
+<<<<<<< HEAD
     color: var(--color-chocolate);
     font-weight: bold;
 }
 
 .navegacion-principal a:hover {
     color: var(--color-rosa-suave);
+=======
+    color: var(--color-marron-oscuro);
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.navegacion-principal a:hover {
+    color: var(--color-chocolate);
+}
+
+/* FOOTER */
+.pie-pagina {
+    background-color: var(--color-marron-oscuro);
+    color: var(--color-crema-pastel);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.pie-pagina .texto-secundario {
+    color: var(--color-gris-claro);
+    opacity: 1;
+}
+
+.equipo-desarrollo {
+    margin-top: 15px;
+    border-top: 1px solid var(--color-gris-claro);
+    padding-top: 10px;
+}
+
+/* PÁGINA INICIO (INDEX) */
+.contenido-principal {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.historia-marca {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.historia-marca h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    grid-column: 1 / -1;
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.productos-destacados h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* CATÁLOGO Y FILTROS */
+.filtros-catalogo {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-rosa-suave);
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.controles-filtro select {
+    padding: 10px;
+    font-family: var(--fuente-principal);
+    border: 2px solid var(--color-chocolate);
+    border-radius: 5px;
+    color: var(--color-marron-oscuro);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.grilla-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 20px 40px 20px;
+}
+
+.producto-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-gris-claro);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.producto-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.info-producto h3 {
+    margin: 10px 0;
+}
+
+.precio {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-chocolate);
+    margin: 15px 0;
+}
+
+.btn-agregar-carrito {
+    width: 100%;
+    margin-top: auto;
+}
+
+/* CARRITO DE COMPRAS */
+.layout-carrito {
+    display: grid;
+    /* Divide la pantalla: 2 fracciones para la lista, 1 para el resumen */
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.lista-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-carrito {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gris-claro);
+    border-radius: 8px;
+    padding: 15px;
+    gap: 20px;
+}
+
+.item-carrito img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.detalles-item {
+    flex-grow: 1;
+}
+
+.detalles-item h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.controles-cantidad {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.input-cantidad {
+    width: 60px;
+    padding: 5px;
+    border: 2px solid var(--color-rosa-suave);
+    border-radius: 5px;
+    text-align: center;
+    font-family: var(--fuente-principal);
+}
+
+.btn-eliminar {
+    background: none;
+    color: #d32f2f;
+    padding: 5px;
+    font-size: 0.9rem;
+}
+
+.btn-eliminar:hover {
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.resumen-compra {
+    background-color: var(--color-rosa-suave);
+    padding: 25px;
+    border-radius: 8px;
+    position: sticky; /* Mantiene el resumen visible al hacer scroll */
+    top: 20px;
+}
+
+.input-con-boton {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-con-boton input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--color-chocolate);
+    border-radius: 5px;
+    font-family: var(--fuente-principal);
+}
+
+.totales p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.total-final {
+    font-weight: bold;
+    font-size: 1.4rem !important;
+    color: var(--color-chocolate);
+    border-top: 2px solid var(--color-chocolate);
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.btn-block {
+    width: 100%;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .layout-carrito {
+        grid-template-columns: 1fr; /* Pasa a 1 sola columna */
+    }
+    .item-carrito {
+        flex-direction: column;
+        text-align: center;
+    }
+    .controles-cantidad {
+        align-items: center;
+        width: 100%;
+    }
+}
+
+/* PROMOCIONES */
+.banner-aniversario {
+    background-color: var(--color-chocolate);
+    color: var(--color-crema-pastel);
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.banner-aniversario h2 {
+    color: var(--color-crema-pastel);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.grilla-promociones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.promocion-card {
+    background-color: #ffffff;
+    border: 2px dashed var(--color-rosa-suave);
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.promocion-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-chocolate);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.descuento-destacado {
+    font-family: var(--fuente-titulos);
+    font-size: 2.5rem;
+    color: var(--color-chocolate);
+    background-color: var(--color-rosa-suave);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.promocion-card h3 {
+    margin: 10px 0;
+    font-size: 1.4rem;
+}
+
+.promocion-card p {
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.promocion-card a {
+    width: 100%;
+}
+
+.promocion-card a button {
+    width: 100%;
+}
+/* FORMULARIO DE REGISTRO */
+.seccion-registro {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--color-chocolate);
+}
+
+.seccion-registro h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.seccion-registro > p {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.grupo-input {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--color-marron-oscuro);
+}
+
+.grupo-input input {
+    padding: 12px;
+    border: 1px solid var(--color-gris-claro);
+    border-radius: 5px;
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.grupo-input input:focus {
+    outline: none;
+    border-color: var(--color-chocolate);
+}
+
+.mensaje-error {
+    color: #d32f2f; /* Rojo para alertas */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 1.2em; /* Reserva el espacio aunque esté vacío para que el form no salte */
+}
+
+.text-pequeno {
+    font-size: 0.85rem;
+    margin-top: 5px;
+>>>>>>> feature/ariannyluna
 }

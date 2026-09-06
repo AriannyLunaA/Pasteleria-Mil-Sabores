@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Pastelería 1000 Sabores</title>
+    
+    <!-- Importación de tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Conexión a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-top">
+            <!-- Logo y Nombre -->
+            <div class="logo-container">
+                <h1>Pastelería 1000 Sabores</h1>
+                <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+            </div>
+            
+            <!-- Carrito y Accesos -->
+            <div class="accesos-usuario">
+                <a href="carrito.html" class="link-carrito">🛒 Cart (<span id="contador-carrito">0</span>   )</a>
+                <div class="enlaces-auth">
+                    <a href="iniciar_sesion.html">Iniciar sesión</a> | 
+                    <a href="registro.html">Registrar usuario</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación unificada con la ruta correcta -->
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <!-- Título y Filtros -->
+        <section class="filtros-catalogo">
+            <h2>Catálogo de Productos</h2>
+            <div class="controles-filtro">
+                <label for="filtro-tipo">Filtrar por categoría:</label>
+                <select id="filtro-tipo">
+                    <option value="todos">Mostrar Todos</option>
+                    <option value="cuadrada">Tortas Cuadradas</option>
+                    <option value="circular">Tortas Circulares</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- CONTENEDOR VACÍO CRÍTICO: JavaScript inyectará aquí las tarjetas de productos -->
+        <section class="grilla-productos" id="contenedor-productos">
+            <!-- El contenido se genera automáticamente desde js/scripts.js -->
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <!-- Conexión al archivo JS -->
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>
