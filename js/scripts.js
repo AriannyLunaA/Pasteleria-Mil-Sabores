@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'TT-003', nombre: 'Torta de Manjar y Nuez', descripcion: 'El clásico sabor chileno. Bizcocho de nuez con abundante manjar.', precio: 42000, imagen: 'img/torta-manjar.jpg', categoria: 'circular' }
     ];
 
+    // CANDADO 1: Congelamos el inventario para que nadie pueda alterar precios ni descripciones
+    Object.freeze(inventarioProductos);
+    inventarioProductos.forEach(producto => Object.freeze(producto));
+
     const datosRegiones = [
         { region: "Región Metropolitana", comunas: ["Santiago", "Ñuñoa", "Providencia", "Puente Alto", "Maipú"] },
         { region: "Región de Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"] },
@@ -18,12 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatearMoneda = (numero) => '$' + numero.toLocaleString('es-CL');
     const regexCorreoGlobal = /^[a-zA-Z0-9._%+-]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
     
-    // Inicialización segura del carrito (evita bloqueos si la memoria está corrupta)
+    // CANDADO 2: Sanitizamos el carrito al leer la memoria
     let carrito = [];
     try {
-        carrito = JSON.parse(localStorage.getItem('carritoPasteleria')) || [];
+        const carritoCrudo = JSON.parse(localStorage.getItem('carritoPasteleria')) || [];
+        
+        // Filtramos: Solo aceptamos productos que existan en el inventario y con cantidad positiva
+        carrito = carritoCrudo.filter(itemCarrito => {
+            const existeEnInventario = inventarioProductos.some(p => p.id === itemCarrito.id);
+            const esCantidadValida = typeof itemCarrito.cantidad === 'number' && itemCarrito.cantidad > 0;
+            return existeEnInventario && esCantidadValida;
+        });
     } catch (error) {
-        localStorage.removeItem('carritoPasteleria');
+        localStorage.removeItem('carritoPasteleria'); // Borra datos si hubo manipulación maliciosa
     }
 
     // ==========================================
