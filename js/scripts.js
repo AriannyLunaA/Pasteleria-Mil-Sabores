@@ -1,12 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
+   // ==========================================
     // 1. BASE DE DATOS: PRODUCTOS Y REGIONES
     // ==========================================
     const inventarioProductos = [
-        { id: 'TC-001', nombre: 'Torta Cuadrada de Chocolate', descripcion: 'Bizcocho de chocolate intenso, relleno de crema de chocolate y trufa.', precio: 45000, imagen: 'img/torta-chocolate.jpg', categoria: 'cuadrada' },
-        { id: 'TT-002', nombre: 'Torta Circular de Vainilla', descripcion: 'Torta clásica con bizcocho de vainilla, relleno a elección.', precio: 40000, imagen: 'img/torta-vainilla.jpg', categoria: 'circular' },
-        { id: 'TT-003', nombre: 'Torta de Manjar y Nuez', descripcion: 'El clásico sabor chileno. Bizcocho de nuez con abundante manjar.', precio: 42000, imagen: 'img/torta-manjar.jpg', categoria: 'circular' }
+        { 
+            id: 'TC-001', 
+            nombre: 'Torta Cuadrada de Chocolate', 
+            descripcion: 'Bizcocho de chocolate intenso, relleno de crema de chocolate y trufa.', 
+            precio: 45000, 
+            imagen: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80', 
+            categoria: 'cuadrada' 
+        },
+        { 
+            id: 'TT-002', 
+            nombre: 'Torta Circular de Vainilla', 
+            descripcion: 'Torta clásica con bizcocho de vainilla, relleno a elección.', 
+            precio: 40000, 
+            imagen: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&q=80', 
+            categoria: 'circular' 
+        },
+        { 
+            id: 'TT-003', 
+            nombre: 'Torta de Manjar y Nuez', 
+            descripcion: 'El clásico sabor chileno. Bizcocho de nuez con abundante manjar.', 
+            precio: 42000, 
+            imagen: 'img/torta-manjar.jpg', 
+            categoria: 'circular' 
+        },
+        { 
+            id: 'TT-004', 
+            nombre: 'AriLu', 
+            descripcion: 'Una torta de red velvet con cerezas y un toque de flor de durazno.', 
+            precio: 48000, 
+            imagen: 'img/torta-arilu.jpg', 
+            categoria: 'circular' 
+        }
     ];
 
     // CANDADO 1: Congelamos el inventario para que nadie pueda alterar precios ni descripciones
