@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Pastelería 1000 Sabores</title>
+    
+    <!-- Importación de tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <!-- Conexión a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="header-top">
+            <!-- Logo y Nombre -->
+            <div class="logo-container">
+                <h1>Pastelería 1000 Sabores</h1>
+                <p class="texto-secundario">50 aniversario celebrando la repostería chilena</p>
+            </div>
+            
+            <!-- Carrito y Accesos -->
+            <div class="accesos-usuario">
+                <a href="carrito.html" class="link-carrito">🛒 Cart (0)</a>
+                <div class="enlaces-auth">
+                    <a href="iniciar_sesion.html">Iniciar sesión</a> | 
+                    <a href="registro.html">Registrar usuario</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación alineada a los mockups -->
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido-principal">
+        <section class="seccion-registro">
+            <h2>Registro de usuario</h2>
+            <p class="texto-secundario">Únete a nuestra comunidad y accede a beneficios exclusivos.</p>
+            
+            <!-- El atributo novalidate permite que JS controle las validaciones -->
+            <form id="formulario-registro" action="#" method="POST" novalidate>
+                
+                <div class="grupo-input">
+                    <label for="run">RUN (Sin puntos ni guion, Ej: 19011022K):</label>
+                    <input type="text" id="run" name="run" placeholder="Ej: 19011022K" required maxlength="9">
+                    <span class="mensaje-error" id="error-run"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="nombre">Nombres:</label>
+                    <input type="text" id="nombre" name="nombre" autocomplete="name" required maxlength="50">
+                    <span class="mensaje-error" id="error-nombre"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" required maxlength="100">
+                    <span class="mensaje-error" id="error-apellidos"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" autocomplete="email" placeholder="usuario@duoc.cl" required maxlength="100">
+                    <span class="mensaje-error" id="error-correo"></span>
+                    <p class="texto-secundario text-pequeno">Solo se aceptan correos @duoc.cl, @profesor.duoc.cl o @gmail.com</p>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" required minlength="4" maxlength="10">
+                    <span class="mensaje-error" id="error-contrasena"></span>
+                    <p class="texto-secundario text-pequeno">Debe contener entre 4 y 10 caracteres.</p>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+                    <input type="password" id="confirmar-contrasena" name="confirmar-contrasena" required>
+                    <span class="mensaje-error" id="error-confirmar"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required maxlength="300">
+                    <span class="mensaje-error" id="error-direccion"></span>
+                </div>
+
+                <!-- Contenedor para Selects dinámicos -->
+                <div class="grupo-input">
+                    <label for="region">Región:</label>
+                    <select id="region" name="region" required>
+                        <option value="">-- Seleccione una región --</option>
+                        <!-- Opciones inyectadas por JS -->
+                    </select>
+                    <span class="mensaje-error" id="error-region"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="comuna">Comuna:</label>
+                    <select id="comuna" name="comuna" required disabled>
+                        <option value="">-- Seleccione una comuna --</option>
+                        <!-- Opciones inyectadas por JS al elegir región -->
+                    </select>
+                    <span class="mensaje-error" id="error-comuna"></span>
+                </div>
+
+                <div class="grupo-input">
+                    <label for="telefono">Teléfono (Opcional):</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+
+                <div class="grupo-input">
+                    <label for="fecha-nacimiento">Fecha de Nacimiento (Opcional):</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" autocomplete="bday">
+                    <span class="mensaje-error" id="error-edad"></span>
+                </div>
+
+                <button type="submit" class="btn-acento-chocolate btn-block" id="btn-registrar">Registrarme</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="info-footer">
+            <p>© 2026 Pastelería 1000 Sabores. Tradición y calidad.</p>
+            <p class="texto-secundario">Apoyando a los estudiantes de gastronomía y la comunidad local.</p>
+        </div>
+        <div class="equipo-desarrollo">
+            <p class="texto-secundario"><strong>Equipo de Desarrollo 1:</strong> Arianny L., Apolo V., Sofía V.</p>
+        </div>
+    </footer>
+
+    <!-- Conexión al archivo JS -->
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>
