@@ -1,48 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-   // ==========================================
-    // 1. BASE DE DATOS: PRODUCTOS Y REGIONES
     // ==========================================
-    const inventarioProductos = [
-        { 
-            id: 'TC-001', 
-            nombre: 'Torta Cuadrada de Chocolate', 
-            descripcion: 'Bizcocho de chocolate intenso, relleno de crema de chocolate y trufa.', 
-            precio: 45000, 
-            imagen: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80', 
-            categoria: 'cuadrada' 
-        },
-        { 
-            id: 'TT-002', 
-            nombre: 'Torta Circular de Vainilla', 
-            descripcion: 'Torta clásica con bizcocho de vainilla, relleno a elección.', 
-            precio: 40000, 
-            imagen: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&q=80', 
-            categoria: 'circular' 
-        },
-        { 
-            id: 'TT-003', 
-            nombre: 'Torta de Manjar y Nuez', 
-            descripcion: 'El clásico sabor chileno. Bizcocho de nuez con abundante manjar.', 
-            precio: 42000, 
-            imagen: 'img/torta-manjar.jpg', 
-            categoria: 'circular' 
-        },
-        { 
-            id: 'TT-004', 
-            nombre: 'AriLu', 
-            descripcion: 'Una torta de red velvet con cerezas y un toque de flor de durazno.', 
-            precio: 48000, 
-            imagen: 'img/torta-arilu.jpg', 
-            categoria: 'circular' 
-        }
+    // 1. BASE DE DATOS PERSISTENTE (LOCALSTORAGE)
+    // ==========================================
+// ==========================================
+    // 1. BASE DE DATOS PERSISTENTE (LOCALSTORAGE)
+    // ==========================================
+    const inventarioPorDefecto = [
+        { id: 'TC-001', nombre: 'Torta Cuadrada de Chocolate', descripcion: 'Bizcocho de chocolate intenso, relleno de trufa.', precio: 45000, imagen: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80', categoria: 'cuadrada' },
+        { id: 'TT-002', nombre: 'Torta Circular de Vainilla', descripcion: 'Torta clásica con bizcocho de vainilla.', precio: 40000, imagen: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=500&q=80', categoria: 'circular' },
+        { id: 'TT-003', nombre: 'Torta de Manjar y Nuez', descripcion: 'El clásico sabor chileno. Bizcocho de nuez con manjar.', precio: 42000, imagen: 'img/torta-manjar.jpg', categoria: 'circular' },
+        { id: 'TT-004', nombre: 'AriLu', descripcion: 'Una torta de red velvet con cerezas y un toque de flor de durazno.', precio: 48000, imagen: 'img/torta-arilu.jpg', categoria: 'circular' }
     ];
 
-    // CANDADO 1: Congelamos el inventario para que nadie pueda alterar precios ni descripciones
-    Object.freeze(inventarioProductos);
-    inventarioProductos.forEach(producto => Object.freeze(producto));
+    // Inicializa el inventario en LocalStorage si es la primera vez que entra a la página
+    if (!localStorage.getItem('inventarioPasteleria')) {
+        localStorage.setItem('inventarioPasteleria', JSON.stringify(inventarioPorDefecto));
+    }
+    
+    // Cargamos el inventario dinámico limpio
+    let inventarioProductos = JSON.parse(localStorage.getItem('inventarioPasteleria'));
 
     const datosRegiones = [
+
         { region: "Región Metropolitana", comunas: ["Santiago", "Ñuñoa", "Providencia", "Puente Alto", "Maipú"] },
         { region: "Región de Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué", "Villa Alemana"] },
         { region: "Región del Biobío", comunas: ["Concepción", "Talcahuano", "Chiguayante", "San Pedro de la Paz"] }
@@ -324,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
+   // ==========================================
     // 6. LÓGICA DEL FORMULARIO DE INICIO DE SESIÓN
     // ==========================================
     const formLogin = document.getElementById('formulario-login');
@@ -334,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let formularioValido = true;
             document.querySelectorAll('.mensaje-error').forEach(span => span.textContent = '');
 
-            const inputCorreo = document.getElementById('correo-login').value.trim();
+            const inputCorreo = document.getElementById('correo-login').value.trim().toLowerCase();
             const inputPass = document.getElementById('pass-login').value;
 
             if (!regexCorreoGlobal.test(inputCorreo) || inputCorreo.length > 100) {
@@ -348,9 +328,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (formularioValido) {
-                alert('Inicio de sesión exitoso.');
                 formLogin.reset();
-                window.location.href = 'index.html'; 
+                
+                // LLAVE MAESTRA: Redirección según el tipo de usuario
+                if (inputCorreo === 'admin@duoc.cl') {
+                    alert('Bienvenido Administrador. Accediendo al Panel de Control...');
+                    window.location.href = 'admin.html';
+                } else {
+                    alert('Inicio de sesión exitoso. Bienvenido a 1000 Sabores.');
+                    window.location.href = 'index.html'; 
+                }
             }
         });
     }
@@ -388,6 +375,72 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Mensaje enviado con éxito. Nos contactaremos a la brevedad.');
                 formContacto.reset();
             }
+        });
+    }
+
+
+    // ==========================================
+    // 8. MÓDULO ADMINISTRADOR (Gestión de Inventario)
+    // ==========================================
+    const tablaAdmin = document.getElementById('cuerpo-tabla-admin');
+    const formAdmin = document.getElementById('form-admin-producto');
+
+    if (tablaAdmin && formAdmin) {
+        // Función para leer y renderizar la tabla
+        const renderizarTablaAdmin = () => {
+            tablaAdmin.innerHTML = '';
+            inventarioProductos.forEach(producto => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td><strong>${producto.id}</strong></td>
+                    <td>${producto.nombre}</td>
+                    <td>${formatearMoneda(producto.precio)}</td>
+                    <td>${producto.categoria}</td>
+                    <td><button class="btn-eliminar-admin" data-id="${producto.id}" style="background: #d32f2f; color: white; padding: 5px 10px;">Eliminar</button></td>
+                `;
+                tablaAdmin.appendChild(fila);
+            });
+
+            // Lógica para eliminar productos del inventario maestro
+            document.querySelectorAll('.btn-eliminar-admin').forEach(boton => {
+                boton.addEventListener('click', (e) => {
+                    const idAEliminar = e.target.dataset.id;
+                    if (confirm(`¿Seguro que deseas eliminar el producto ${idAEliminar}?`)) {
+                        inventarioProductos = inventarioProductos.filter(p => p.id !== idAEliminar);
+                        localStorage.setItem('inventarioPasteleria', JSON.stringify(inventarioProductos));
+                        renderizarTablaAdmin();
+                        alert('Producto eliminado.');
+                    }
+                });
+            });
+        };
+
+        // Render inicial
+        renderizarTablaAdmin();
+
+        // Lógica para Crear (Agregar) nuevos productos
+        formAdmin.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nuevoProducto = {
+                id: document.getElementById('admin-id').value.trim().toUpperCase(),
+                nombre: document.getElementById('admin-nombre').value.trim(),
+                descripcion: document.getElementById('admin-desc').value.trim(),
+                precio: parseInt(document.getElementById('admin-precio').value),
+                categoria: document.getElementById('admin-categoria').value,
+                imagen: 'img/torta-chocolate.jpg' // Imagen genérica por defecto para nuevos
+            };
+
+            // Validar que el ID no exista
+            if (inventarioProductos.some(p => p.id === nuevoProducto.id)) {
+                alert('Error: Ese ID de producto ya existe.');
+                return;
+            }
+
+            inventarioProductos.push(nuevoProducto);
+            localStorage.setItem('inventarioPasteleria', JSON.stringify(inventarioProductos));
+            renderizarTablaAdmin();
+            formAdmin.reset();
+            alert('Producto agregado exitosamente al catálogo.');
         });
     }
 });

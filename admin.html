@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - 1000 Sabores</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos exclusivos para la tabla de administración */
+        .admin-container { max-width: 1000px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; }
+        .tabla-admin { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .tabla-admin th, .tabla-admin td { border: 1px solid var(--color-gris-claro); padding: 10px; text-align: left; }
+        .tabla-admin th { background-color: var(--color-chocolate); color: var(--color-crema-pastel); }
+        .form-admin { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: var(--color-rosa-suave); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <header class="header-principal" style="border-bottom: 4px solid var(--color-chocolate);">
+        <div class="logo-container">
+            <h1>⚙️ Modo Administrador</h1>
+            <p class="texto-secundario">Gestión de Inventario - Pastelería 1000 Sabores</p>
+        </div>
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="index.html">← Volver a la Tienda Pública</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <h2>Agregar Nuevo Producto</h2>
+        <form id="form-admin-producto" class="form-admin">
+            <div class="grupo-input">
+                <label>ID Producto (Ej: TT-004)</label>
+                <input type="text" id="admin-id" required>
+            </div>
+            <div class="grupo-input">
+                <label>Nombre de la Torta</label>
+                <input type="text" id="admin-nombre" required>
+            </div>
+            <div class="grupo-input" style="grid-column: 1 / -1;">
+                <label>Descripción</label>
+                <input type="text" id="admin-desc" required>
+            </div>
+            <div class="grupo-input">
+                <label>Precio (Solo números)</label>
+                <input type="number" id="admin-precio" required min="1000">
+            </div>
+            <div class="grupo-input">
+                <label>Categoría</label>
+                <select id="admin-categoria" required>
+                    <option value="circular">Circular</option>
+                    <option value="cuadrada">Cuadrada</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-acento-chocolate" style="grid-column: 1 / -1;">➕ Guardar en Inventario</button>
+        </form>
+
+        <h2>Inventario Actual</h2>
+        <table class="tabla-admin">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-tabla-admin">
+                <!-- Se inyecta dinámicamente con JS -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>
