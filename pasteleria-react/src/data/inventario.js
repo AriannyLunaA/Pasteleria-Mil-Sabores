@@ -41,7 +41,7 @@ export const inventarioInicial = [
   },
   {
     id: "TT-006",
-    nombre: "Torta Zoe",
+    nombre: "Torta  Mi Zoe 🧡 ",
     descripcion: "Bizcocho suave relleno de crema de fresas y frutos rojos, diseñada con un perfil dulce y colorido.",
     precio: 46000,
     categoria: "circular",
