@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1792108579167" clover="3.2.0">
+  <project timestamp="1792108579167" name="All files">
+    <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3" elements="17" coveredelements="17" complexity="0" loc="12" ncloc="12" packages="1" files="1" classes="1"/>
+    <file name="Registro.jsx" path="C:\Users\arian\Desktop\Pasteleria_Mil_Sabores\pasteleria-react\src\views\Registro.jsx">
+      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="14" type="stmt"/>
+      <line num="11" count="14" type="stmt"/>
+      <line num="12" count="10" type="stmt"/>
+      <line num="18" count="14" type="stmt"/>
+      <line num="19" count="2" type="stmt"/>
+      <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="31" count="14" type="stmt"/>
+    </file>
+  </project>
+</coverage>
