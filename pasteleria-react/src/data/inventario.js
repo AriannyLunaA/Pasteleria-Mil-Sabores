@@ -36,7 +36,7 @@ export const inventarioInicial = [
     nombre: "Torta Vegana de Semillas",
     descripcion: "Bizcocho preparado con leche vegetal de linaza y sésamo, incorporando semillas de maravilla tostadas.",
     precio: 43000,
-    categoria: "circular",
+    categoria: "cuadrada",
     imagen: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&q=80"
   },
   {
@@ -46,5 +46,21 @@ export const inventarioInicial = [
     precio: 46000,
     categoria: "circular",
     imagen: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80"
+  },
+  {
+    id: "TT-007",
+    nombre: "Torta Tres Leches",
+    categoria: "Cuadrada",
+    descripcion: "Clásico bizcocho esponjoso bañado en nuestra mezcla artesanal de tres leches, cubierta con un suave merengue suizo.",
+    precio: 30000,
+    imagen:"/img/torta-tresleche.jpg" 
+  },
+  {
+    id: "TT-008",
+    nombre: "Torta Besos de Mora ",
+    categoria: "Cuadrada",
+    descripcion: "Esponjoso bizcocho de vainilla relleno con crema pastelera y una reducción artesanal de moras silvestres, cubierta con crema chantilly y fruta fresca.",
+    precio: 17500,
+    imagen: "/img/torta-mora.jpg"
   }
 ];

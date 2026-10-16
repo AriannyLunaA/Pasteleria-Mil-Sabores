@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
-    // 1. BASE DE DATOS PERSISTENTE (LOCALSTORAGE)
-    // ==========================================
 // ==========================================
     // 1. BASE DE DATOS PERSISTENTE (LOCALSTORAGE)
     // ==========================================
