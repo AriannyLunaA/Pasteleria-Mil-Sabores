@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 
+
 const Navbar = () => {
   const { carrito } = useContext(CartContext);
   const navigate = useNavigate();
@@ -60,7 +61,11 @@ const Navbar = () => {
         <ul>
           <li><Link to="/">Nosotros</Link></li>
           <li><Link to="/catalogo">Catálogo</Link></li>
-          
+          <li><Link to="/blogs">Blogs</Link></li>
+          <li><Link to="/promociones">Promociones</Link></li>
+          <li><Link to="/contacto">Contacto</Link></li>
+
+          {/* Enlace al panel de administración solo si el usuario es admin */}
           {usuario?.rol === 'admin' && (
             <li><Link to="/admin" style={{ color: 'var(--color-chocolate)' }}>Panel Admin</Link></li>
           )}
