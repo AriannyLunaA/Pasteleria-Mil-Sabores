@@ -13,7 +13,7 @@ import Promociones from './views/Promociones';
 import Blogs from './views/Blogs';
 import DetalleBlog from './views/DetalleBlog'; 
 import DetalleBlog2 from './views/DetalleBlog2'; 
-
+import Perfil from './views/Perfil';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="/" element={<Nosotros />} />
           
           {/*   Rutas */}
+          <Route path="/perfil" element={<Perfil />} />
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/registro" element={<Registro />} />

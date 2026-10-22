@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 
-
 const Navbar = () => {
   const { carrito } = useContext(CartContext);
   const navigate = useNavigate();
@@ -37,13 +36,15 @@ const Navbar = () => {
           <div className="enlaces-auth">
             {!usuario ? (
               <>
+                {/* CORRECCIÓN 1: La ruta de Iniciar Sesión vuelve a ser /login */}
                 <Link to="/login">Iniciar sesión</Link> | <Link to="/registro">Registrar usuario</Link>
               </>
             ) : (
               <>
-                <span className="texto-secundario me-2" style={{ fontSize: '0.9rem' }}>
-                  {usuario.email}
-                </span> | 
+                {/* CORRECCIÓN 2: El nombre del usuario ahora es un enlace clickeable hacia /perfil */}
+                <Link to="/perfil" className="texto-secundario fw-bold me-2" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>
+                  👤 {usuario.nombre || usuario.email}
+                </Link> | 
                 <button 
                   onClick={handleLogout} 
                   style={{ background: 'none', border: 'none', padding: 0, color: 'var(--color-chocolate)', cursor: 'pointer', fontSize: '0.9rem', marginLeft: '5px' }}

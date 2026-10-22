@@ -3,16 +3,23 @@ import { createContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Inicialización perezosa: revisa el localStorage antes de montar el estado vacío
   const [carrito, setCarrito] = useState(() => {
     const carritoGuardado = localStorage.getItem("carrito");
     return carritoGuardado ? JSON.parse(carritoGuardado) : [];
   });
 
-  // Efecto secundario: actualiza el localStorage cada vez que el arreglo 'carrito' muta
+  const [descuento, setDescuento] = useState(() => {
+    const descuentoGuardado = localStorage.getItem("descuento");
+    return descuentoGuardado ? JSON.parse(descuentoGuardado) : null;
+  });
+
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
+
+  useEffect(() => {
+    localStorage.setItem("descuento", JSON.stringify(descuento));
+  }, [descuento]);
 
   const agregarAlCarrito = (producto) => {
     setCarrito((carritoActual) => [...carritoActual, producto]);
@@ -24,8 +31,12 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const aplicarDescuento = (promo) => {
+    setDescuento(promo);
+  };
+
   return (
-    <CartContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito }}>
+    <CartContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito, descuento, aplicarDescuento }}>
       {children}
     </CartContext.Provider>
   );

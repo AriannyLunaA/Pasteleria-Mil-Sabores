@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 C:/Users/arian/Desktop/Pasteleria_Mil_Sabores/pasteleria-react
+      Coverage enabled with v8
+
+ ✓ src/__tests__/CartContext.test.jsx (3 tests) 238ms
+ ✓ src/__tests__/Catalogo.test.jsx (4 tests) 258ms
+ ✓ src/__tests__/Carrito.test.jsx (3 tests) 279ms
+ ✓ src/__tests__/Registro.test.jsx (5 tests) 358ms
+
+ Test Files  4 passed (4)
+      Tests  15 passed (15)
+   Start at  18:44:25
+   Duration  2.14s (environment 63%, tests 16%, setup 12%, import 5%, worker 4%, transform 1%)
+
+ % Coverage report from v8
+------------------|---------|----------|---------|---------|--------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+------------------|---------|----------|---------|---------|--------------------
+All files         |   77.38 |       70 |   72.41 |   76.54 |                    
+ context          |   95.45 |       75 |    90.9 |      95 |                    
+  CartContext.jsx |   95.45 |       75 |    90.9 |      95 | 35                 
+ views            |   70.96 |    69.23 |   61.11 |   70.49 |                    
+  Carrito.jsx     |   48.57 |       50 |   36.36 |   47.05 | ...0,44-51,102-160 
+  Catalogo.jsx    |     100 |      100 |     100 |     100 |                    
+  Registro.jsx    |     100 |      100 |     100 |     100 |                    
+------------------|---------|----------|---------|---------|--------------------
