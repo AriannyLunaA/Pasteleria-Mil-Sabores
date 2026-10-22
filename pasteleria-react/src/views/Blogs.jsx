@@ -15,11 +15,7 @@ const Blogs = () => {
           </Link>
         </article>
         <div className="video-container">
-          <img 
-            src="/img/blog1.jpg" 
-            alt="Preparación de torta" 
-            style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} 
-          />
+          <img src="/img/blog1.jpg" alt="Preparación de torta" style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />
         </div>
       </section>
 
@@ -28,19 +24,12 @@ const Blogs = () => {
         <article className="mision-vision">
           <h3>CASO CURIOSO #2: Repostería sin azúcar</h3>
           <p>La innovación llega a nuestros hornos. Conoce cómo logramos mantener el sabor de siempre utilizando alternativas saludables para toda la familia.</p>
-          
-          {/* AQUÍ SE INTEGRÓ EL CAMBIO: La ruta ahora apunta a /detalle-blog-2 */}
           <Link to="/detalle-blog-2">
             <button className="btn-acento-rosa">VER CASO</button>
           </Link>
-          
         </article>
         <div className="video-container">
-          <img 
-            src="/img/blog2.jpg" 
-            alt="Ingredientes saludables" 
-            style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} 
-          />
+          <img src="/img/blog2.jpg" alt="Ingredientes saludables" style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />
         </div>
       </section>
     </main>

@@ -9,9 +9,10 @@ import Login from './views/Login';
 import RutaPrivadaAdmin from './components/RutaPrivadaAdmin'; 
 import Nosotros from './views/Nosotros'; 
 import Contacto from './views/Contacto'; 
+import Promociones from './views/Promociones'; 
 import Blogs from './views/Blogs';
-import Promociones from './views/Promociones';  
-import DetalleBlog2 from './views/DetalleBlog2'; // Importa la vista de detalle del blog 2
+import DetalleBlog from './views/DetalleBlog'; 
+import DetalleBlog2 from './views/DetalleBlog2'; 
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           {/* RUTA RAÍZ: Ahora la página de inicio es "Nosotros" */}
           <Route path="/" element={<Nosotros />} />
           
-          {/* EL CATÁLOGO: Ahora tiene su propia ruta */}
+          {/*   Rutas */}
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/registro" element={<Registro />} />
@@ -31,7 +32,12 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/promociones" element={<Promociones />} />
-          <Route path="/detalle-blog" element={<DetalleBlog2 />} /> 
+         
+
+          {/* Rutas de los Blogs corregidas */}
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/detalle-blog" element={<DetalleBlog />} />
+          <Route path="/detalle-blog-2" element={<DetalleBlog2 />} />
 
           {/* RUTA PROTEGIDA: Única declaración para el panel de Admin */}
           <Route path="/admin" element={
