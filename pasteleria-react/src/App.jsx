@@ -7,6 +7,7 @@ import Registro from './views/Registro';
 import Admin from './views/Admin'; 
 import Login from './views/Login'; 
 import RutaPrivadaAdmin from './components/RutaPrivadaAdmin'; 
+import Vendedor from './views/Vendedor';
 import Nosotros from './views/Nosotros'; 
 import Contacto from './views/Contacto'; 
 import Promociones from './views/Promociones'; 
@@ -14,6 +15,8 @@ import Blogs from './views/Blogs';
 import DetalleBlog from './views/DetalleBlog'; 
 import DetalleBlog2 from './views/DetalleBlog2'; 
 import Perfil from './views/Perfil';
+import Checkout from './views/Checkout';
+import CompraExitosa from './views/CompraExitosa';
 
 function App() {
   return (
@@ -33,12 +36,14 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/promociones" element={<Promociones />} />
-         
+          <Route path="/checkout" element={<Checkout />} />   
+          <Route path="/compra-exitosa" element={<CompraExitosa />} />
 
           {/* Rutas de los Blogs corregidas */}
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/detalle-blog" element={<DetalleBlog />} />
           <Route path="/detalle-blog-2" element={<DetalleBlog2 />} />
+          <Route path="/vendedor" element={<Vendedor />} /> 
 
           {/* RUTA PROTEGIDA: Única declaración para el panel de Admin */}
           <Route path="/admin" element={

@@ -46,9 +46,8 @@ const Carrito = () => {
     if (!usuarioActivo) {
       setMostrarAuth(true);
     } else {
-      alert(`Pago de $${totalFinal.toLocaleString('es-CL')} procesado con éxito. ¡Gracias por tu compra, ${usuarioActivo.email}!`);
-      aplicarDescuento(null); // Limpiamos el descuento tras pagar
-      setMostrarAuth(false);
+      // Navegamos al checkout en lugar de mostrar la alerta
+      navigate('/checkout');
     }
   };
 
@@ -131,7 +130,7 @@ const Carrito = () => {
                         (Quitar cupón)
                       </button>
                     </span>
-                    <span>- ${montoDescuento.toLocaleString('es-CL')}</span>
+                    <span>-${montoDescuento.toLocaleString('es-CL')}</span>
                   </div>
                 )}
                 

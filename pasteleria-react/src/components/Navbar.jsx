@@ -18,6 +18,11 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  // Variables de control de roles para mantener el código limpio
+  const esVendedor = usuario?.rol === 'vendedor';
+  const esAdmin = usuario?.rol === 'admin';
+  const esClienteOInvitado = !usuario || usuario?.rol === 'cliente';
+
   return (
     <header className="header-principal">
       <div className="header-top">
@@ -29,19 +34,21 @@ const Navbar = () => {
         
         {/* Carrito y Accesos */}
         <div className="accesos-usuario">
-          <Link to="/carrito" className="link-carrito">
-            🛒 Cart (<span id="contador-carrito">{carrito.length}</span>)
-          </Link>
+          
+          {/* El carrito NO se muestra al vendedor, solo a clientes y admins */}
+          {!esVendedor && (
+            <Link to="/carrito" className="link-carrito">
+              🛒 Cart (<span id="contador-carrito">{carrito.length}</span>)
+            </Link>
+          )}
           
           <div className="enlaces-auth">
             {!usuario ? (
               <>
-                {/* CORRECCIÓN 1: La ruta de Iniciar Sesión vuelve a ser /login */}
                 <Link to="/login">Iniciar sesión</Link> | <Link to="/registro">Registrar usuario</Link>
               </>
             ) : (
               <>
-                {/* CORRECCIÓN 2: El nombre del usuario ahora es un enlace clickeable hacia /perfil */}
                 <Link to="/perfil" className="texto-secundario fw-bold me-2" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>
                   👤 {usuario.nombre || usuario.email}
                 </Link> | 
@@ -60,15 +67,33 @@ const Navbar = () => {
       {/* Navegación alineada a los mockups */}
       <nav className="navegacion-principal">
         <ul>
-          <li><Link to="/">Nosotros</Link></li>
-          <li><Link to="/catalogo">Catálogo</Link></li>
-          <li><Link to="/blogs">Blogs</Link></li>
-          <li><Link to="/promociones">Promociones</Link></li>
-          <li><Link to="/contacto">Contacto</Link></li>
+          {/* Enlaces exclusivos de la Tienda (Ocultos para el vendedor) */}
+          {(esClienteOInvitado || esAdmin) && (
+            <>
+              <li><Link to="/">Nosotros</Link></li>
+              <li><Link to="/catalogo">Catálogo</Link></li>
+              <li><Link to="/blogs">Blogs</Link></li>
+              <li><Link to="/promociones">Promociones</Link></li>
+              <li><Link to="/contacto">Contacto</Link></li>
+            </>
+          )}
 
-          {/* Enlace al panel de administración solo si el usuario es admin */}
-          {usuario?.rol === 'admin' && (
-            <li><Link to="/admin" style={{ color: 'var(--color-chocolate)' }}>Panel Admin</Link></li>
+          {/* Enlace al panel de Vendedor (Visible para Vendedor y Admin) */}
+          {(esVendedor || esAdmin) && (
+            <li>
+              <Link to="/vendedor" style={{ color: 'var(--color-chocolate)', fontWeight: 'bold' }}>
+                Panel Vendedor
+              </Link>
+            </li>
+          )}
+
+          {/* Enlace al panel de administración (Solo Admin) */}
+          {esAdmin && (
+            <li>
+              <Link to="/admin" style={{ color: 'var(--color-chocolate)', fontWeight: 'bold' }}>
+                Panel Admin
+              </Link>
+            </li>
           )}
         </ul>
       </nav>
