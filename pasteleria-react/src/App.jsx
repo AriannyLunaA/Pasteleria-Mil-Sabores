@@ -17,6 +17,7 @@ import DetalleBlog2 from './views/DetalleBlog2';
 import Perfil from './views/Perfil';
 import Checkout from './views/Checkout';
 import CompraExitosa from './views/CompraExitosa';
+import CompraFallida from './views/CompraFallida';
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
           <Route path="/promociones" element={<Promociones />} />
           <Route path="/checkout" element={<Checkout />} />   
           <Route path="/compra-exitosa" element={<CompraExitosa />} />
-
+          <Route path="/compra-fallida" element={<CompraFallida />} />
           {/* Rutas de los Blogs corregidas */}
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/detalle-blog" element={<DetalleBlog />} />

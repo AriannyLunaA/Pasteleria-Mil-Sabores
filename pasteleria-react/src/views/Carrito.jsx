@@ -18,10 +18,12 @@ const Carrito = () => {
     'FELICES50': { nombre: 'Cupón Aniversario', porcentaje: 0.10 }
   };
 
-  // === CÁLCULO MATEMÁTICO ===
+  // === CÁLCULO MATEMÁTICO CON IMPUESTOS (IVA 19%) ===
   const subtotal = carrito.reduce((acc, producto) => acc + producto.precio, 0);
   const montoDescuento = descuento ? (subtotal * descuento.porcentaje) : 0;
-  const totalFinal = subtotal - montoDescuento;
+  const baseImponible = subtotal - montoDescuento;
+  const impuestoIVA = baseImponible * 0.19; // Cálculo del 19% IVA
+  const totalFinal = baseImponible + impuestoIVA; // Total a pagar
 
   const validarCodigo = () => {
     const codigoFormateado = codigoInput.trim().toUpperCase();
@@ -118,7 +120,7 @@ const Carrito = () => {
                 {/* Desglose Matemático */}
                 <div className="d-flex justify-content-between mb-2 text-muted">
                   <span>Subtotal:</span>
-                  <span>${subtotal.toLocaleString('es-CL')}</span>
+                  <span>${subtotal.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
                 </div>
                 
                 {descuento && (
@@ -130,14 +132,20 @@ const Carrito = () => {
                         (Quitar cupón)
                       </button>
                     </span>
-                    <span>-${montoDescuento.toLocaleString('es-CL')}</span>
+                    <span>-${montoDescuento.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
                   </div>
                 )}
                 
+                {/* NUEVO: Fila del IVA */}
+                <div className="d-flex justify-content-between mb-2 text-muted">
+                  <span>IVA (19%):</span>
+                  <span>${impuestoIVA.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
+                </div>
+
                 <hr />
                 <div className="d-flex justify-content-between mb-3 fs-5">
                   <span>Total Final:</span>
-                  <strong className="text-primary">${totalFinal.toLocaleString('es-CL')}</strong>
+                  <strong className="text-primary">${totalFinal.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</strong>
                 </div>
 
                 <button className="btn btn-success w-100 fw-bold" onClick={procesarPago}>

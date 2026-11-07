@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { inventarioInicial } from '../data/inventario';
 
 const Admin = () => {
-  // === ESTADOS DEL PANEL ===
   const [seccionActiva, setSeccionActiva] = useState('inventario');
 
-  // === ESTADOS Y LÓGICA DEL INVENTARIO (Tú código original) ===
+  // === ESTADOS Y LÓGICA DEL INVENTARIO ===
   const [productos, setProductos] = useState(() => {
     const inventarioGuardado = localStorage.getItem("inventario_admin");
     return inventarioGuardado ? JSON.parse(inventarioGuardado) : inventarioInicial;
@@ -64,24 +63,105 @@ const Admin = () => {
     setModoFormulario(null);
   };
 
-  // === RENDERIZADO DE PESTAÑAS (MOCKUPS) ===
+  // === ESTADOS PARA ÓRDENES Y USUARIOS ===
+  const [ordenes, setOrdenes] = useState([
+    { id: 1045, fecha: '16/10/2026', cliente: 'juan.perez@gmail.com', total: 35000, estado: 'Pendiente' },
+    { id: 1044, fecha: '15/10/2026', cliente: 'maria.gomez@duoc.cl', total: 15000, estado: 'Entregado' }
+  ]);
+
+  const [usuarios, setUsuarios] = useState([
+    { id: 1, nombre: 'Administrador Supremo', correo: 'admin@milsabores.cl', rol: 'admin' },
+    { id: 2, nombre: 'Vendedor Duoc', correo: 'ventas@milsabores.cl', rol: 'vendedor' },
+    { id: 3, nombre: 'Cliente Frecuente', correo: 'cliente@gmail.com', rol: 'cliente' }
+  ]);
+
+  const actualizarEstadoOrden = (id, nuevoEstado) => {
+    setOrdenes(ordenes.map(o => o.id === id ? { ...o, estado: nuevoEstado } : o));
+  };
+
+  const actualizarRolUsuario = (id, nuevoRol) => {
+    setUsuarios(usuarios.map(u => u.id === id ? { ...u, rol: nuevoRol } : u));
+  };
+
+  // === VARIABLES DINÁMICAS PARA EL DASHBOARD ===
+  const totalVentas = ordenes.reduce((acc, orden) => acc + orden.total, 0);
+  const ordenesPendientes = ordenes.filter(o => o.estado === 'Pendiente').length;
+  const totalUsuarios = usuarios.length;
+
+  // === FUNCIÓN PARA GENERAR Y DESCARGAR PDF ===
+  const generarPDF = () => {
+    const ventana = window.open('', '_blank');
+    ventana.document.write(`
+      <html>
+        <head>
+          <title>Reporte Pastelería Mil Sabores</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; color: #333; }
+            h1 { color: #8B4513; border-bottom: 2px solid #8B4513; padding-bottom: 10px; }
+            h2 { color: #d2691e; margin-top: 30px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+            th { background-color: #f8f9fa; color: #333; }
+            .resumen { background-color: #fcf8f2; padding: 15px; border-radius: 8px; border: 1px solid #f5deb3; }
+          </style>
+        </head>
+        <body>
+          <h1>Reporte de Estado - Pastelería Mil Sabores</h1>
+          <p><strong>Fecha de generación:</strong> ${new Date().toLocaleDateString()}</p>
+          
+          <h2>1. Resumen General</h2>
+          <div class="resumen">
+            <ul>
+              <li><strong>Total de Ventas Registradas:</strong> $${totalVentas.toLocaleString('es-CL')}</li>
+              <li><strong>Órdenes Pendientes:</strong> ${ordenesPendientes}</li>
+              <li><strong>Usuarios Totales en Plataforma:</strong> ${totalUsuarios}</li>
+              <li><strong>Productos Activos en Catálogo:</strong> ${productos.length}</li>
+            </ul>
+          </div>
+
+          <h2>2. Estado de Órdenes Actuales</h2>
+          <table>
+            <tr><th>ID Pedido</th><th>Fecha</th><th>Cliente</th><th>Total</th><th>Estado</th></tr>
+            ${ordenes.map(o => `<tr><td>#${o.id}</td><td>${o.fecha}</td><td>${o.cliente}</td><td>$${o.total.toLocaleString('es-CL')}</td><td>${o.estado}</td></tr>`).join('')}
+          </table>
+
+          <h2>3. Estado del Inventario</h2>
+          <table>
+            <tr><th>ID</th><th>Producto</th><th>Categoría</th><th>Precio</th></tr>
+            ${productos.map(p => `<tr><td>${p.id}</td><td>${p.nombre}</td><td>${p.categoria}</td><td>$${p.precio.toLocaleString('es-CL')}</td></tr>`).join('')}
+          </table>
+
+          <script>
+            // Lanza el cuadro de impresión automáticamente para guardar como PDF
+            window.onload = () => { 
+              window.print(); 
+              setTimeout(() => window.close(), 500); 
+            };
+          </script>
+        </body>
+      </html>
+    `);
+    ventana.document.close();
+  };
+
+  // === RENDERIZADO DE PESTAÑAS ===
   const renderDashboard = () => (
     <div>
-      <h3 className="mb-4 text-primary">Dashboard (Resumen)</h3>
+      <h3 className="mb-4 text-primary">Dashboard (Resumen Actualizado)</h3>
       <div className="row g-3">
         <div className="col-md-4">
           <div className="card bg-success text-white shadow-sm border-0">
-            <div className="card-body"><h5>Ventas del Día</h5><h2>$125.500</h2></div>
+            <div className="card-body"><h5>Ventas Registradas</h5><h2>${totalVentas.toLocaleString('es-CL')}</h2></div>
           </div>
         </div>
         <div className="col-md-4">
           <div className="card bg-warning text-dark shadow-sm border-0">
-            <div className="card-body"><h5>Órdenes Pendientes</h5><h2>12</h2></div>
+            <div className="card-body"><h5>Órdenes Pendientes</h5><h2>{ordenesPendientes}</h2></div>
           </div>
         </div>
         <div className="col-md-4">
           <div className="card bg-info text-white shadow-sm border-0">
-            <div className="card-body"><h5>Nuevos Usuarios</h5><h2>5</h2></div>
+            <div className="card-body"><h5>Total Usuarios</h5><h2>{totalUsuarios}</h2></div>
           </div>
         </div>
       </div>
@@ -97,8 +177,31 @@ const Admin = () => {
             <tr><th>ID Pedido</th><th>Fecha</th><th>Cliente</th><th>Total</th><th>Estado</th><th>Acción</th></tr>
           </thead>
           <tbody>
-            <tr><td>#1045</td><td>16/10/2026</td><td>juan.perez@gmail.com</td><td>$35.000</td><td><span className="badge bg-warning text-dark">Pendiente</span></td><td><button className="btn btn-sm btn-outline-primary">Detalle</button></td></tr>
-            <tr><td>#1044</td><td>15/10/2026</td><td>maria.gomez@duoc.cl</td><td>$15.000</td><td><span className="badge bg-success">Entregado</span></td><td><button className="btn btn-sm btn-outline-primary">Detalle</button></td></tr>
+            {ordenes.map(orden => (
+              <tr key={orden.id}>
+                <td>#{orden.id}</td>
+                <td>{orden.fecha}</td>
+                <td>{orden.cliente}</td>
+                <td className="fw-bold">${orden.total.toLocaleString('es-CL')}</td>
+                <td>
+                  <span className={`badge ${orden.estado === 'Pendiente' ? 'bg-warning text-dark' : 'bg-success'}`}>
+                    {orden.estado}
+                  </span>
+                </td>
+                <td>
+                  <select 
+                    className="form-select form-select-sm" 
+                    value={orden.estado}
+                    onChange={(e) => actualizarEstadoOrden(orden.id, e.target.value)}
+                  >
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Preparando">Preparando</option>
+                    <option value="Entregado">Entregado</option>
+                    <option value="Cancelada">Cancelada</option>
+                  </select>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -107,15 +210,31 @@ const Admin = () => {
 
   const renderUsuarios = () => (
     <div>
-      <h3 className="mb-4 text-primary">Gestión de Usuarios</h3>
+      <h3 className="mb-4 text-primary">Gestión de Roles y Usuarios</h3>
       <div className="table-responsive shadow-sm rounded">
         <table className="table table-hover align-middle bg-white mb-0">
           <thead className="table-dark">
-            <tr><th>ID</th><th>Nombre</th><th>Correo</th><th>Rol</th><th>Acciones</th></tr>
+            <tr><th>ID</th><th>Nombre</th><th>Correo</th><th>Rol Asignado</th></tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Administrador</td><td>admin@duoc.cl</td><td><span className="badge bg-danger">Admin</span></td><td><button className="btn btn-sm btn-secondary" disabled>Editar</button></td></tr>
-            <tr><td>2</td><td>Cliente Frecuente</td><td>cliente@gmail.com</td><td><span className="badge bg-primary">Cliente</span></td><td><button className="btn btn-sm btn-outline-danger">Bloquear</button></td></tr>
+            {usuarios.map(usuario => (
+              <tr key={usuario.id}>
+                <td>{usuario.id}</td>
+                <td>{usuario.nombre}</td>
+                <td>{usuario.correo}</td>
+                <td>
+                  <select 
+                    className="form-select form-select-sm w-auto" 
+                    value={usuario.rol}
+                    onChange={(e) => actualizarRolUsuario(usuario.id, e.target.value)}
+                  >
+                    <option value="admin">Administrador</option>
+                    <option value="vendedor">Vendedor</option>
+                    <option value="cliente">Cliente</option>
+                  </select>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -127,13 +246,23 @@ const Admin = () => {
       <h3 className="mb-4 text-primary">Reportes del Sistema</h3>
       <div className="row g-3">
         <div className="col-md-6">
-          <div className="card shadow-sm border-0"><div className="card-body d-flex justify-content-between"><div><h5 className="mb-1">Ventas Mensuales</h5></div><button className="btn btn-success">Descargar</button></div></div>
+          <div className="card shadow-sm border-0">
+            <div className="card-body d-flex justify-content-between align-items-center">
+              <div>
+                <h5 className="mb-1">Reporte de Estado Global</h5>
+                <small className="text-muted">Genera un documento PDF con ventas, inventario y órdenes.</small>
+              </div>
+              {/* Botón actualizado para generar PDF */}
+              <button className="btn btn-danger" onClick={generarPDF}>
+                <i className="bi bi-file-earmark-pdf me-1"></i> Descargar PDF
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 
-  // === PESTAÑA DE INVENTARIO (Tu código original) ===
   const renderInventario = () => (
     <div>
       {modoFormulario ? (
@@ -192,18 +321,15 @@ const Admin = () => {
   return (
     <main className="container-fluid mt-4 mb-5">
       <div className="row">
-        {/* Menú Lateral (Sidebar) */}
         <div className="col-md-3 col-lg-2 mb-4">
           <div className="list-group shadow-sm">
             <button className={`list-group-item list-group-item-action ${seccionActiva === 'inventario' ? 'active bg-dark border-dark' : ''}`} onClick={() => setSeccionActiva('inventario')}>📦 Inventario</button>
             <button className={`list-group-item list-group-item-action ${seccionActiva === 'dashboard' ? 'active bg-dark border-dark' : ''}`} onClick={() => setSeccionActiva('dashboard')}>📊 Dashboard</button>
             <button className={`list-group-item list-group-item-action ${seccionActiva === 'boletas' ? 'active bg-dark border-dark' : ''}`} onClick={() => setSeccionActiva('boletas')}>🧾 Órdenes / Boletas</button>
-            <button className={`list-group-item list-group-item-action ${seccionActiva === 'usuarios' ? 'active bg-dark border-dark' : ''}`} onClick={() => setSeccionActiva('usuarios')}>👥 Usuarios</button>
+            <button className={`list-group-item list-group-item-action ${seccionActiva === 'usuarios' ? 'active bg-dark border-dark' : ''}`} onClick={() => setSeccionActiva('usuarios')}>👥 Usuarios y Roles</button>
             <button className={`list-group-item list-group-item-action ${seccionActiva === 'reportes' ? 'active bg-dark border-dark' : ''}`} onClick={() => setSeccionActiva('reportes')}>📈 Reportes</button>
           </div>
         </div>
-
-        {/* Contenido Principal Dinámico */}
         <div className="col-md-9 col-lg-10">
           <div className="bg-light p-4 rounded shadow-sm" style={{ minHeight: '60vh' }}>
             {seccionActiva === 'inventario' && renderInventario()}
