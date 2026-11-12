@@ -4,13 +4,22 @@ import { inventarioInicial } from '../data/inventario';
 const Admin = () => {
   const [seccionActiva, setSeccionActiva] = useState('inventario');
 
-  // === ESTADOS Y LÓGICA DEL INVENTARIO ===
+  // === ESTADOS Y LÓGICA DEL INVENTARIO (CON STOCK CORREGIDO) ===
   const [productos, setProductos] = useState(() => {
     const inventarioGuardado = localStorage.getItem("inventario_admin");
-    return inventarioGuardado ? JSON.parse(inventarioGuardado) : inventarioInicial;
+    if (inventarioGuardado) {
+      const datosAnteriores = JSON.parse(inventarioGuardado);
+      // CORRECCIÓN: Si hay datos viejos sin stock, les ponemos 10 automáticamente
+      return datosAnteriores.map(p => ({ ...p, stock: p.stock !== undefined ? p.stock : 10 }));
+    }
+    
+    // Si es primera vez, cargamos el inventario inicial con 10 unidades
+    const inventarioConStock = inventarioInicial.map(p => ({ ...p, stock: 10 }));
+    return inventarioConStock;
   });
+  
   const [modoFormulario, setModoFormulario] = useState(null); 
-  const [formData, setFormData] = useState({ id: '', nombre: '', descripcion: '', precio: 0, categoria: '', imagen: '' });
+  const [formData, setFormData] = useState({ id: '', nombre: '', descripcion: '', precio: 0, stock: 10, categoria: '', imagen: '' });
 
   useEffect(() => {
     localStorage.setItem("inventario_admin", JSON.stringify(productos));
@@ -25,7 +34,7 @@ const Admin = () => {
 
   const iniciarEdicion = (producto) => {
     setModoFormulario('EDITAR');
-    setFormData({ ...producto });
+    setFormData({ ...producto, stock: producto.stock !== undefined ? producto.stock : 10 });
   };
 
   const iniciarCreacion = () => {
@@ -38,14 +47,14 @@ const Admin = () => {
     const nuevoId = `TT-${siguienteNumero}`;
 
     setModoFormulario('CREAR');
-    setFormData({ id: nuevoId, nombre: '', descripcion: '', precio: 0, categoria: '', imagen: '' });
+    setFormData({ id: nuevoId, nombre: '', descripcion: '', precio: 0, stock: 10, categoria: '', imagen: '' });
   };
 
   const manejarCambio = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
-      [name]: name === 'precio' ? Number(value) : value
+      [name]: (name === 'precio' || name === 'stock') ? Number(value) : value
     }));
   };
 
@@ -127,12 +136,11 @@ const Admin = () => {
 
           <h2>3. Estado del Inventario</h2>
           <table>
-            <tr><th>ID</th><th>Producto</th><th>Categoría</th><th>Precio</th></tr>
-            ${productos.map(p => `<tr><td>${p.id}</td><td>${p.nombre}</td><td>${p.categoria}</td><td>$${p.precio.toLocaleString('es-CL')}</td></tr>`).join('')}
+            <tr><th>ID</th><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th></tr>
+            ${productos.map(p => `<tr><td>${p.id}</td><td>${p.nombre}</td><td>${p.categoria}</td><td>$${p.precio.toLocaleString('es-CL')}</td><td>${p.stock} un.</td></tr>`).join('')}
           </table>
 
           <script>
-            // Lanza el cuadro de impresión automáticamente para guardar como PDF
             window.onload = () => { 
               window.print(); 
               setTimeout(() => window.close(), 500); 
@@ -144,7 +152,6 @@ const Admin = () => {
     ventana.document.close();
   };
 
-  // === RENDERIZADO DE PESTAÑAS ===
   const renderDashboard = () => (
     <div>
       <h3 className="mb-4 text-primary">Dashboard (Resumen Actualizado)</h3>
@@ -252,7 +259,6 @@ const Admin = () => {
                 <h5 className="mb-1">Reporte de Estado Global</h5>
                 <small className="text-muted">Genera un documento PDF con ventas, inventario y órdenes.</small>
               </div>
-              {/* Botón actualizado para generar PDF */}
               <button className="btn btn-danger" onClick={generarPDF}>
                 <i className="bi bi-file-earmark-pdf me-1"></i> Descargar PDF
               </button>
@@ -275,8 +281,9 @@ const Admin = () => {
               <div className="row">
                 <div className="col-md-6 mb-3"><label className="form-label">Nombre</label><input type="text" className="form-control" name="nombre" value={formData.nombre} onChange={manejarCambio} required /></div>
                 <div className="col-md-6 mb-3"><label className="form-label">Categoría</label><input type="text" className="form-control" name="categoria" value={formData.categoria} onChange={manejarCambio} required /></div>
-                <div className="col-md-6 mb-3"><label className="form-label">Precio</label><input type="number" className="form-control" name="precio" value={formData.precio} onChange={manejarCambio} required /></div>
-                <div className="col-md-6 mb-3"><label className="form-label">URL de Imagen</label><input type="text" className="form-control" name="imagen" value={formData.imagen} onChange={manejarCambio} required /></div>
+                <div className="col-md-4 mb-3"><label className="form-label">Precio</label><input type="number" className="form-control" name="precio" value={formData.precio} onChange={manejarCambio} required /></div>
+                <div className="col-md-2 mb-3"><label className="form-label">Stock</label><input type="number" className="form-control" name="stock" value={formData.stock} onChange={manejarCambio} required min="0" /></div>
+                <div className="col-md-12 mb-3"><label className="form-label">URL de Imagen</label><input type="text" className="form-control" name="imagen" value={formData.imagen} onChange={manejarCambio} required /></div>
                 <div className="col-12 mb-3"><label className="form-label">Descripción</label><textarea className="form-control" name="descripcion" value={formData.descripcion} onChange={manejarCambio} required rows="2"></textarea></div>
               </div>
               <div className="d-flex justify-content-end">
@@ -296,7 +303,15 @@ const Admin = () => {
       <div className="table-responsive shadow-sm">
         <table className="table table-hover table-bordered align-middle bg-white">
           <thead className="table-dark">
-            <tr><th>ID</th><th>Imagen</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th className="text-center">Acciones</th></tr>
+            <tr>
+              <th>ID</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th className="text-center">Acciones</th>
+            </tr>
           </thead>
           <tbody>
             {productos.map((producto) => (
@@ -306,6 +321,11 @@ const Admin = () => {
                 <td className="fw-bold">{producto.nombre}</td>
                 <td><span className="badge bg-secondary">{producto.categoria}</span></td>
                 <td className="text-success fw-bold">${producto.precio.toLocaleString('es-CL')}</td>
+                <td>
+                  <span className={`badge ${producto.stock < 3 ? 'bg-danger' : 'bg-info text-dark'}`}>
+                    {producto.stock} un.
+                  </span>
+                </td>
                 <td className="text-center">
                   <button className="btn btn-sm btn-warning me-2" onClick={() => iniciarEdicion(producto)} disabled={modoFormulario !== null}>Editar</button>
                   <button className="btn btn-sm btn-danger" onClick={() => eliminarProducto(producto.id)} disabled={modoFormulario !== null}>Eliminar</button>

@@ -18,12 +18,14 @@ const Carrito = () => {
     'FELICES50': { nombre: 'Cupón Aniversario', porcentaje: 0.10 }
   };
 
-  // === CÁLCULO MATEMÁTICO CON IMPUESTOS (IVA 19%) ===
+  // === ORDEN MATEMÁTICO CORREGIDO: SUBTOTAL + IVA - DESCUENTO ===
   const subtotal = carrito.reduce((acc, producto) => acc + producto.precio, 0);
-  const montoDescuento = descuento ? (subtotal * descuento.porcentaje) : 0;
-  const baseImponible = subtotal - montoDescuento;
-  const impuestoIVA = baseImponible * 0.19; // Cálculo del 19% IVA
-  const totalFinal = baseImponible + impuestoIVA; // Total a pagar
+  const impuestoIVA = subtotal * 0.19; // Se calcula el 19% sobre el subtotal puro
+  const montoConIva = subtotal + impuestoIVA; // Sumamos el subtotal + IVA
+  
+  // El descuento se calcula en base al monto que ya incluye IVA
+  const montoDescuento = descuento ? (montoConIva * descuento.porcentaje) : 0;
+  const totalFinal = montoConIva - montoDescuento; // Total final real
 
   const validarCodigo = () => {
     const codigoFormateado = codigoInput.trim().toUpperCase();
@@ -48,7 +50,6 @@ const Carrito = () => {
     if (!usuarioActivo) {
       setMostrarAuth(true);
     } else {
-      // Navegamos al checkout en lugar de mostrar la alerta
       navigate('/checkout');
     }
   };
@@ -117,29 +118,30 @@ const Carrito = () => {
 
                 <hr />
 
-                {/* Desglose Matemático */}
-                <div className="d-flex justify-content-between mb-2 text-muted">
-                  <span>Subtotal:</span>
-                  <span>${subtotal.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
-                </div>
-                
-                {descuento && (
-                  <div className="d-flex justify-content-between align-items-center mb-2 text-success fw-bold">
-                    <span>
-                      {descuento.nombre} ({descuento.porcentaje * 100}%):
-                      <br/>
-                      <button className="btn btn-sm btn-link text-danger p-0 text-decoration-none" onClick={quitarDescuento} style={{ fontSize: '0.8rem' }}>
-                        (Quitar cupón)
-                      </button>
-                    </span>
-                    <span>-${montoDescuento.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
+                {/* Desglose Matemático Visualizado en el orden correcto */}
+                <div className="text-muted small">
+                  <div className="d-flex justify-content-between mb-2">
+                    <span>Subtotal:</span>
+                    <span>${subtotal.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
                   </div>
-                )}
-                
-                {/* NUEVO: Fila del IVA */}
-                <div className="d-flex justify-content-between mb-2 text-muted">
-                  <span>IVA (19%):</span>
-                  <span>${impuestoIVA.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
+                  
+                  <div className="d-flex justify-content-between mb-2">
+                    <span>IVA (19%):</span>
+                    <span>+${impuestoIVA.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
+                  </div>
+                  
+                  {descuento && (
+                    <div className="d-flex justify-content-between align-items-center mb-2 text-success fw-bold">
+                      <span>
+                        Descuento ({descuento.porcentaje * 100}%):
+                        <br/>
+                        <button className="btn btn-sm btn-link text-danger p-0 text-decoration-none" onClick={quitarDescuento} style={{ fontSize: '0.8rem' }}>
+                          (Quitar cupón)
+                        </button>
+                      </span>
+                      <span>-${montoDescuento.toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
+                    </div>
+                  )}
                 </div>
 
                 <hr />

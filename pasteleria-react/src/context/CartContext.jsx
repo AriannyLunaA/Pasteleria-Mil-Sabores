@@ -35,8 +35,21 @@ export const CartProvider = ({ children }) => {
     setDescuento(promo);
   };
 
+  // === NUEVA FUNCIÓN NECESARIA PARA EL CHECKOUT ===
+  const vaciarCarrito = () => {
+    setCarrito([]); // Vaciamos los productos
+    setDescuento(null); // Eliminamos el cupón de descuento usado
+  };
+
   return (
-    <CartContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito, descuento, aplicarDescuento }}>
+    <CartContext.Provider value={{ 
+      carrito, 
+      agregarAlCarrito, 
+      eliminarDelCarrito, 
+      descuento, 
+      aplicarDescuento,
+      vaciarCarrito // <-- AGREGADO AL PROVIDER
+    }}>
       {children}
     </CartContext.Provider>
   );
